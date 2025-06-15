@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Иван Луговой</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .avatar {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .contact-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            gap: 10px;
+            font-size: 18px;
+        }
+
+        .contact-line a {
+            color: #0366d6;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-line a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-line span.separator {
+            color: #888;
+        }
+
+        .contact-line img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .skills {
+            margin-top: 30px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
+    <h1>Иван Луговой</h1>
+    <p>Более-менее профессиональный разработчик на каких-то более-менее полезных языках.</p>
+
+    <div class="contact-line">
+        <a href="https://github.com/FalmerF" target="_blank" aria-label="GitHub">
+            <img src="/icons/github.svg" alt="GitHub"> GitHub
+        </a>
+        <span class="separator">|</span>
+        <a href="https://t.me/FalmerF" target="_blank" aria-label="Telegram">
+            <img src="/icons/telegram.svg" alt="Telegram"> Telegram
+        </a>
+    </div>
+
+    <div class="skills">
+        <h3>Навыки:</h3>
+        <div>
+            <span class="tag" th:each="skill : ${skills}" th:text="${skill}">Java</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
