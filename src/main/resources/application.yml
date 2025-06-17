@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: business-card-website
+  datasource:
+    url: jdbc:postgresql://188.68.220.81:5432/bcw
+  jpa:
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+  cloud:
+    vault:
+      authentication: APPROLE
+      uri: https://vault.ilug.ru
+      kv:
+        enabled: true
+        backend: kv
+        application-name: business-card-website
+        default-context: common
+  config:
+    import: file:./env.properties,vault://
+
+server:
+  port: 8531
+
+github:
+  owner: FalmerF
+  repo: my-blog-posts
+  branch: main

@@ -1,0 +1,76 @@
+:root {
+    --border-radius-small: 4px;
+    --border-radius-normal: 6px;
+
+    --color-highlight: #2d2d2d;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    padding: 50px;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.avatar {
+    width: 100px;
+    border-radius: 50%;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.contact-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.contact-line a {
+    color: #0366d6;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.contact-line a:hover {
+    text-decoration: underline;
+}
+
+.contact-line span.separator {
+    color: #888;
+}
+
+.contact-line img {
+    width: 20px;
+    height: 20px;
+}
+
+.skills {
+    margin-top: 30px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+}

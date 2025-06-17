@@ -1,0 +1,42 @@
+div.code-toolbar > .toolbar {
+  background: #2d2d2d;
+  color: #ffffff;
+  border-radius: 0 0 5px 5px;
+  padding: 4px;
+  font-size: 0.875rem;
+  top: .3em;
+  right: .3em;
+  opacity: 1;
+}
+
+div.code-toolbar > .toolbar button {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+div.code-toolbar > .toolbar * {
+  margin-left: .5em;
+}
+
+div.code-toolbar > .toolbar *:first-child {
+  margin-left: 0;
+}
+
+div.code-toolbar > .toolbar button:hover {
+  background: #666;
+}
+
+div.code-toolbar > .toolbar .toolbar-item > span,
+div.code-toolbar > .toolbar .toolbar-item > button {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  background: #3a3a3a;
+  border-radius: 4px;
+  color: #ccc;
+}

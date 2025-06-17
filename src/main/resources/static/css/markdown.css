@@ -1,0 +1,123 @@
+/* Main container */
+.post-content {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    color: #222;
+    line-height: 1.7;
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Headers */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.post-content h1 { font-size: 2em; }
+.post-content h2 { font-size: 1.6em; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+.post-content h3 { font-size: 1.3em; }
+.post-content h4 { font-size: 1.1em; }
+
+.post-content p {
+    margin: 1em 0;
+}
+
+/* Lists */
+.post-content ul,
+.post-content ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.post-content li {
+    margin-bottom: 0.4em;
+}
+
+/* Images */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1em 0;
+    border-radius: var(--border-radius-normal);
+}
+
+/* Tables */
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.95em;
+}
+
+.post-content th,
+.post-content td {
+    border: 1px solid #ddd;
+    padding: 0.6em;
+}
+
+.post-content th {
+    background-color: #f3f3f3;
+    text-align: left;
+}
+
+/* Links */
+.post-content a {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+.post-content a:hover {
+    text-decoration: none;
+}
+
+/* Separators */
+.post-content hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 2em 0;
+}
+
+/* Code blocks */
+.post-content pre {
+    padding: 1em;
+    overflow-x: auto;
+    border-radius: var(--border-radius-normal);
+    font-size: 0.95em;
+    margin: 1.2em 0;
+}
+
+.post-content pre code {
+    background-color: transparent;
+    color: inherit;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    padding: 0;
+}
+
+/* Code highlight */
+.post-content code {
+    background-color: var(--color-highlight);
+    color: #f8f8f2;
+    padding: 0.2em 0.4em;
+    border-radius: var(--border-radius-small);
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 0.95em;
+}
+
+/* Quotes */
+.post-content blockquote {
+    margin: 1em 0;
+    padding-left: 1em;
+    border-left: 4px solid #555;
+    background-color: var(--color-highlight);
+    color: #ccc;
+    font-style: italic;
+    border-radius: var(--border-radius-small);
+}
