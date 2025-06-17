@@ -32,11 +32,17 @@
 
 <article class="post">
     <div class="post-content" th:utext="${post.htmlContent}"></div>
-    <div class="footer" style="justify-content: space-between">
+    <div class="post-footer" style="justify-content: space-between">
         <a class="btn" href="/">← Назад к блогу</a>
-        <div class="footer">
-            <span class="date" th:text="'Просмотров: ' + ${post.views}"></span>
-            <span class="date" th:text="${post.date}"></span>
+        <div class="post-meta">
+            <div class="post-meta-value">
+                <img src="/icons/views.svg" alt="views">
+                <span th:text="${post.views}"></span>
+            </div>
+            <div class="post-meta-value">
+                <img src="/icons/time.svg" alt="time">
+                <span th:text="${post.date}"></span>
+            </div>
         </div>
     </div>
 </article>
