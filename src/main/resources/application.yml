@@ -19,7 +19,7 @@ spring:
         application-name: business-card-website
         default-context: common
   config:
-    import: file:./env.properties,vault://
+    import: file:./env.properties,vault://,classpath:career.yml
 
 server:
   port: 8531

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#_Безымянный_градиент_2);
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <circle class="cls-2" cx="8" cy="8" r="8"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-2" width="16" height="16"/>
+    </clipPath>
+    <linearGradient id="_Безымянный_градиент_2" data-name="Безымянный градиент 2" x1="-416.5" y1="575.65" x2="-416.49" y2="575.65" gradientTransform="translate(357158.51 493632.29) scale(857.51 -857.51)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c5183c"/>
+      <stop offset="1" stop-color="#4d529e"/>
+    </linearGradient>
+  </defs>
+  <g class="cls-5">
+    <g class="cls-4">
+      <rect class="cls-1" width="16" height="16"/>
+    </g>
+    <path class="cls-3" d="m-2.57,25.58c1.14-1.06,2.08-2.75,2.81-5.07.2-.64.37-1.25.49-1.8l2.48-10.41c.39-1.69,1.1-2.99,2.12-3.91,1.02-.92,2.47-1.38,4.36-1.38,1.12,0,1.98.18,2.92.6l-.74,2.93c-.59-.29-1.59-.52-2.41-.52-1.44,0-2.35.78-2.73,2.33l-.15.63h4.2l-.71,2.92h-4.18l-1.45,6.08c-1,4.19-2.27,6.88-3.82,8.06l-3.18-.45Z"/>
+  </g>
+</svg>

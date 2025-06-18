@@ -1,0 +1,39 @@
+career:
+  skills:
+    - name: Java 8-17
+      icon: java.svg
+    - name: Spring
+      icon: spring.svg
+    - name: Hibernate
+      icon: hibernate.svg
+    - name: JavaFX
+      icon: java.svg
+    - name: PostgreSQL
+      icon: postgresql.svg
+    - name: MongoDB
+      icon: mongodb.svg
+    - name: Docker
+      icon: docker.svg
+    - name: HashiCorp Vault
+      icon: vault.svg
+    - name: Gradle
+      icon: gradle.svg
+  works:
+    - name: Forte Holding GmbH
+      legalName: ООО «ФОРТЕ ХОУМ ГМБХ»
+      icon: forte.svg
+      position: Java-разработчик
+      period: Ноябрь 2024 — сейчас
+      tasks: Поддержка, расширение и проектирование микро-сервисной архитектуры на основе Spring Boot 3.x. Настройка CI/CD пайплайна.
+    - name: VimeWorld
+      legalName: ООО «Ваймворлд»
+      icon: vimeworld.ico
+      position: Java-разработчик
+      period: Март 2025 — Май 2025
+      tasks: Расширение и улучшение функционала для создания графического пользовательского интерфейса. Разработка frontend пользовательских интерфейсов.
+    - name: Cristalix
+      legalName: ИП Леханов Константин Анатольевич
+      icon: cristalix.png
+      position: Java-разработчик
+      period: Ноябрь 2022 — Ноябрь 2024
+      tasks: Разработка и проектирование функционала для создания графического пользовательского интерфейса на основе OpenGL. Разработка frontend пользовательских интерфейсов. Разработка и поддержка готовых графических решений.

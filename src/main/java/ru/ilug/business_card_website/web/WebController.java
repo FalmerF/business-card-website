@@ -7,38 +7,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import ru.ilug.business_card_website.CareerConfiguration;
 import ru.ilug.business_card_website.data.model.BlogPost;
-import ru.ilug.business_card_website.data.model.Skill;
 import ru.ilug.business_card_website.service.GitHubMarkdownService;
 import ru.ilug.business_card_website.service.PostViewsService;
 
 import java.util.Collection;
-import java.util.List;
 
 @Controller
 @EnableCaching
 @RequiredArgsConstructor
 public class WebController {
 
-    private final static List<Skill> SKILLS = List.of(
-            Skill.of("Java 8-17", "java.svg"),
-            Skill.of("Spring", "spring.svg"),
-            Skill.of("Hibernate", "hibernate.svg"),
-            Skill.of("JavaFX", "java.svg"),
-            Skill.of("PostgreSQL", "postgresql.svg"),
-            Skill.of("MongoDB", "mongodb.svg"),
-            Skill.of("Docker", "docker.svg"),
-            Skill.of("HashiCorp Vault", "vault.svg"),
-            Skill.of("Gradle", "gradle.svg")
-    );
-
+    private final CareerConfiguration configuration;
     private final GitHubMarkdownService gitHubMarkdownService;
     private final PostViewsService postViewsService;
 
     @GetMapping("/")
     @Cacheable("indexHtmlCache")
     public String index(Model model) {
-        model.addAttribute("skills", SKILLS);
+        model.addAttribute("skills", configuration.getSkills());
+        model.addAttribute("works", configuration.getWorks());
 
         return "index";
     }

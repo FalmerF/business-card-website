@@ -1,0 +1,46 @@
+.career {
+    border-top: 1px solid #ccc;
+    margin-top: 125px;
+    padding-top: 100px;
+}
+
+.work {
+    text-align: left;
+    max-width: 600px;
+    width: -webkit-fill-available;
+    justify-self: center;
+    margin-top: 75px;
+    padding-bottom: 50px;
+}
+
+.work-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.work-header img {
+    width: 30px;
+    header: 30px;
+}
+
+.work-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.work-value {
+    display: flex;
+    justify-content: space-between;
+}
+
+.work-tasks {
+    border-top: 1px solid #ccc;
+    width: -webkit-fill-available;
+    margin-top: 25px;
+}
+
+.work-tasks p {
+    line-height: 1.6;
+}

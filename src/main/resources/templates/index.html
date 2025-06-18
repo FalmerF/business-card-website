@@ -6,6 +6,7 @@
     <title>Иван Луговой</title>
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/career.css}">
 </head>
 <body>
 <div class="card">
@@ -31,5 +32,35 @@
         </div>
     </div>
 </div>
+
+<section class="career">
+    <h1>Карьера</h1>
+
+    <div class="work" th:each="work : ${works}">
+        <div class="work-header">
+            <img th:src="'/icons/work/' + ${work.icon}" src="" alt="">
+            <h2 th:text="${work.name}"></h2>
+        </div>
+        <div class="work-info">
+            <div class="work-value">
+                <span>Наименование:</span>
+                <span th:text="${work.legalName}"></span>
+            </div>
+            <div class="work-value">
+                <span>Позиция:</span>
+                <span th:text="${work.position}"></span>
+            </div>
+            <div class="work-value">
+                <span>Время работы:</span>
+                <span th:text="${work.period}"></span>
+            </div>
+        </div>
+        <div class="work-tasks">
+            <h3>Задачи</h3>
+            <p th:text="${work.tasks}"></p>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>

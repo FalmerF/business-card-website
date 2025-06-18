@@ -7,9 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Skill {
+public class Work {
 
     private String name;
+    private String legalName;
     private String icon;
+    private String position;
+    private String period;
+    private String tasks;
 
 }
