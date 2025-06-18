@@ -36,13 +36,19 @@ public class WebController {
     private final PostViewsService postViewsService;
 
     @GetMapping("/")
+    @Cacheable("indexHtmlCache")
     public String index(Model model) {
         model.addAttribute("skills", SKILLS);
 
+        return "index";
+    }
+
+    @GetMapping("/blog")
+    public String blog(Model model) {
         Collection<BlogPost> posts = gitHubMarkdownService.getPostMap().values();
         model.addAttribute("posts", posts);
 
-        return "index";
+        return "blog";
     }
 
     @GetMapping("/post/{slug}")

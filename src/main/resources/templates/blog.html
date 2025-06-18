@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Иван Луговой</title>
+
+    <!-- Prism core -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+
+    <!-- Languages -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-markup.min.js"></script>
+
+    <!-- Plugin ToolBar -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.css">
+
+    <!-- Plugin Copy to Clipboard -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+    <!-- Plugin Show Language -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/blog.css}">
+    <link rel="stylesheet" th:href="@{/css/markdown.css}">
+    <link rel="stylesheet" th:href="@{/css/toolbar.css}">
+</head>
+<body>
+<section id="blog">
+    <h2>Блог</h2>
+
+    <div th:each="post : ${posts}">
+        <section class="post">
+            <div class="post-content" th:utext="${post.previewHtmlContent}"></div>
+            <div class="post-footer" style="justify-content: space-between">
+                <a class="btn" th:href="@{/post/{slug}(slug=${post.title})}">Читать далее →</a>
+                <div class="post-meta">
+                    <div class="post-meta-value">
+                        <img src="/icons/views.svg" alt="views">
+                        <span th:text="${post.views}"></span>
+                    </div>
+                    <div class="post-meta-value">
+                        <img src="/icons/time.svg" alt="time">
+                        <span th:text="${post.date}"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+</body>
+</html>
