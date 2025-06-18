@@ -59,6 +59,14 @@
             <h3>Задачи</h3>
             <p th:text="${work.tasks}"></p>
         </div>
+        <div class="work-stack">
+            <h3>Стек</h3>
+            <div class="tag-holder">
+                <div class="tag" th:each="skill : ${work.stack}">
+                    <span th:text="${skill}"></span>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

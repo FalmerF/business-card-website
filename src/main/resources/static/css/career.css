@@ -44,3 +44,20 @@
 .work-tasks p {
     line-height: 1.6;
 }
+
+.work-stack {
+    width: -webkit-fill-available;
+    margin-top: 25px;
+}
+
+.work-stack .tag-holder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.work-stack .tag {
+    background-color: #e4e4e4;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
