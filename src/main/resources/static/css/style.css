@@ -65,15 +65,25 @@ h1 {
 }
 
 .skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     margin-top: 30px;
 }
 
 .tag {
-    display: inline-block;
-    background-color: #e0e0e0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #f4f4f4;
     color: #333;
     padding: 8px 12px;
-    margin: 5px;
     border-radius: 20px;
     font-size: 14px;
+}
+
+.tag img {
+    width: 20px;
+    height: 20px;
 }

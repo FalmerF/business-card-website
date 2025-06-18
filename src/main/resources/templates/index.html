@@ -32,7 +32,6 @@
 <div class="card">
     <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
     <h1>Иван Луговой</h1>
-    <p>Более-менее профессиональный разработчик на каких-то более-менее полезных языках.</p>
 
     <div class="contact-line">
         <a href="https://github.com/FalmerF" target="_blank" aria-label="GitHub">
@@ -44,10 +43,12 @@
         </a>
     </div>
 
+    <p>Более-менее профессиональный разработчик на каких-то более-менее полезных языках.</p>
+
     <div class="skills">
-        <h3>Навыки:</h3>
-        <div>
-            <span class="tag" th:each="skill : ${skills}" th:text="${skill}">Java</span>
+        <div class="tag" th:each="skill : ${skills}">
+            <img th:src="'/icons/skill/' + ${skill.icon}" src="" alt="">
+            <span th:text="${skill.name}"></span>
         </div>
     </div>
 </div>
