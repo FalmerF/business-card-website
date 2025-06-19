@@ -9,21 +9,25 @@
     <link rel="stylesheet" th:href="@{/css/career.css}">
 </head>
 <body>
-<div class="card">
-    <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
-    <h1>Иван Луговой</h1>
 
-    <div class="contact-line">
-        <a href="https://github.com/FalmerF" target="_blank" aria-label="GitHub">
-            <img src="/icons/github.svg" alt="GitHub"> GitHub
-        </a>
-        <span class="separator">|</span>
-        <a href="https://t.me/FalmerF" target="_blank" aria-label="Telegram">
-            <img src="/icons/telegram.svg" alt="Telegram"> Telegram
-        </a>
+<div class="page">
+    <div class="main-info">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
+        <div>
+            <h1>Иван Луговой</h1>
+            <p>Более-менее профессиональный разработчик на каких-то более-менее полезных языках.</p>
+
+            <div class="contact-line">
+                <a href="https://github.com/FalmerF" target="_blank" aria-label="GitHub">
+                    <img src="/icons/github.svg" alt="GitHub"> GitHub
+                </a>
+                <span class="separator">|</span>
+                <a href="https://t.me/FalmerF" target="_blank" aria-label="Telegram">
+                    <img src="/icons/telegram.svg" alt="Telegram"> Telegram
+                </a>
+            </div>
+        </div>
     </div>
-
-    <p>Более-менее профессиональный разработчик на каких-то более-менее полезных языках.</p>
 
     <div class="skills">
         <div class="tag" th:each="skill : ${skills}">
@@ -33,7 +37,7 @@
     </div>
 </div>
 
-<section class="career">
+<div class="page">
     <h1>Карьера</h1>
 
     <div class="work" th:each="work : ${works}">
@@ -68,7 +72,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
 </body>
 </html>
