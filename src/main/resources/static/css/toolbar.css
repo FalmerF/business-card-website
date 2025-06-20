@@ -1,12 +1,10 @@
 div.code-toolbar > .toolbar {
-  background: #2d2d2d;
   color: #ffffff;
   border-radius: 0 0 5px 5px;
   padding: 4px;
   font-size: 0.875rem;
   top: .3em;
   right: .3em;
-  opacity: 1;
 }
 
 div.code-toolbar > .toolbar button {
