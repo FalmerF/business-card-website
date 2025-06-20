@@ -26,6 +26,11 @@
 .work-value {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+}
+
+.work-value span:last-child {
+    text-align: right;
 }
 
 .work-tasks {
