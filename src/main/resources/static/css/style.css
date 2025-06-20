@@ -13,32 +13,43 @@ body {
     text-align: center;
     background: #f4f4f4;
     padding: 50px;
+    padding-top: 125px;
 }
 
-.card {
-    background: white;
-    padding: 40px;
-    max-width: 500px;
-    margin: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.page {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #222;
+    margin: 0 auto;
+    padding: 100px 0;
+    max-width: 600px;
+    width: -webkit-fill-available;
+    gap: 30px;
+}
+
+.main-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    flex-wrap: wrap;
 }
 
 .avatar {
-    width: 100px;
-    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
 }
 
-h1 {
-    margin-top: 20px;
+.main-info h1 {
+    margin-top: 0;
 }
 
 .contact-line {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 20px 0;
+    margin-top: 20px;
     gap: 10px;
     font-size: 18px;
 }
@@ -67,19 +78,17 @@ h1 {
 .skills {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
-    margin-top: 30px;
 }
 
 .tag {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background-color: #f4f4f4;
+    background-color: #e8e8e8;
     color: #333;
-    padding: 8px 12px;
-    border-radius: 12px;
+    padding: 6px 10px;
+    border-radius: 10px;
     font-size: 14px;
 }
 
