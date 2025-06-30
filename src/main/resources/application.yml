@@ -2,7 +2,7 @@ spring:
   application:
     name: business-card-website
   datasource:
-    url: jdbc:postgresql://188.68.220.81:5432/bcw
+    url: jdbc:postgresql://localhost:5432/bcw
   jpa:
     hibernate:
       ddl-auto: update
