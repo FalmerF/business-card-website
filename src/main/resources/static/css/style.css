@@ -19,11 +19,16 @@ body {
 .page {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    padding: 100px 0;
+    margin: 100px auto 200px auto;
     max-width: 600px;
     width: -webkit-fill-available;
     gap: 30px;
+}
+
+.card {
+    padding: 25px;
+    box-shadow: 0 0 50px #CECECE;
+    border-radius: 16px;
 }
 
 .main-info {

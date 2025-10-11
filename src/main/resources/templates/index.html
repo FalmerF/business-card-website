@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div class="page" style="border-bottom: 1px solid #222;">
+<div class="page card">
     <div class="main-info">
         <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
         <div style="min-width: 150px; max-width: 430px;">
@@ -25,17 +25,12 @@
                 <a href="https://t.me/FalmerF" target="_blank" aria-label="Telegram">
                     <img src="/icons/telegram.svg" alt="Telegram"> Telegram
                 </a>
-                <span class="separator">|</span>
-                <a href="/blog" aria-label="Blog">
-                    <img src="/icons/blog.svg" alt="Blog"> Блог
-                </a>
             </div>
         </div>
     </div>
 
     <div class="skills">
         <div class="tag" th:each="skill : ${skills}">
-            <img th:src="'/icons/skill/' + ${skill.icon}" src="" alt="">
             <span th:text="${skill.name}"></span>
         </div>
     </div>
