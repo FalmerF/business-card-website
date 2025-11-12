@@ -1,4 +1,4 @@
-package ru.ilug.business_card_website.service;
+package ru.ilug.business_card_website.data.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

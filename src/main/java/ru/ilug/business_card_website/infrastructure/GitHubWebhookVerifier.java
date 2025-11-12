@@ -1,43 +1,22 @@
-package ru.ilug.business_card_website.web;
+package ru.ilug.business_card_website.infrastructure;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import ru.ilug.business_card_website.service.GitHubMarkdownService;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
-@RestController
-@RequestMapping("/webhook")
-@RequiredArgsConstructor
-public class GitHubWebhookController {
+@Component
+public class GitHubWebhookVerifier {
 
     private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
-
-    private final GitHubMarkdownService gitHubMarkdownService;
 
     @Value("${github.webhook.secret}")
     private String githubWebhookSecret;
 
-    @PostMapping("/github")
-    public ResponseEntity<String> handleGitHubWebhook(
-            @RequestHeader("X-Hub-Signature") String signature,
-            @RequestBody String payload) {
-
-        if (!isValidSignature(signature, payload)) {
-            return ResponseEntity.status(401).body("Invalid signature");
-        }
-
-        gitHubMarkdownService.updatePosts();
-
-        return ResponseEntity.ok("Webhook processed successfully");
-    }
-
-    private boolean isValidSignature(String signature, String payload) {
+    public boolean isValidSignature(String signature, String payload) {
         if (signature == null || githubWebhookSecret == null) {
             return false;
         }

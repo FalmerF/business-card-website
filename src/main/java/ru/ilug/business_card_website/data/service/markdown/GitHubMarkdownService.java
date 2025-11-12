@@ -1,4 +1,4 @@
-package ru.ilug.business_card_website.service;
+package ru.ilug.business_card_website.data.service.markdown;
 
 import com.vladsch.flexmark.ext.autolink.AutolinkExtension;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
@@ -12,10 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import ru.ilug.business_card_website.data.model.BlogPost;
-import ru.ilug.business_card_website.data.model.GitHubFile;
-import ru.ilug.business_card_website.link.CustomLinkResolverFactory;
-import ru.ilug.business_card_website.web.GitHubWebClient;
+import ru.ilug.business_card_website.infrastructure.dto.BlogPostDTO;
+import ru.ilug.business_card_website.infrastructure.dto.GitHubFileDTO;
+import ru.ilug.business_card_website.data.service.PostViewsService;
+import ru.ilug.business_card_website.infrastructure.client.GitHubClient;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,11 +34,11 @@ public class GitHubMarkdownService {
             .extensions(flexmarkExtensions)
             .build();
 
-    private final GitHubWebClient gitHubWebClient;
+    private final GitHubClient gitHubClient;
     private final PostViewsService postViewsService;
 
     @Getter
-    private Map<String, BlogPost> postMap = new HashMap<>();
+    private Map<String, BlogPostDTO> postMap = new HashMap<>();
 
     @Value("${github.owner}")
     private String owner;
@@ -59,15 +59,15 @@ public class GitHubMarkdownService {
         log.info("Posts successful updated!");
     }
 
-    private Map<String, BlogPost> fetchAllPosts() {
-        return gitHubWebClient.fetchDirectoryFiles("").stream()
+    private Map<String, BlogPostDTO> fetchAllPosts() {
+        return gitHubClient.fetchDirectoryFiles("").stream()
                 .map(this::fetchPost)
                 .filter(Objects::nonNull)
-                .collect(Collectors.toMap(BlogPost::getTitle, p -> p));
+                .collect(Collectors.toMap(BlogPostDTO::getTitle, p -> p));
     }
 
-    private BlogPost fetchPost(GitHubFile directory) {
-        GitHubFile file = gitHubWebClient.fetchDirectoryFiles("/" + directory.getName())
+    private BlogPostDTO fetchPost(GitHubFileDTO directory) {
+        GitHubFileDTO file = gitHubClient.fetchDirectoryFiles("/" + directory.getName())
                 .stream().filter(f -> f.getName().endsWith(".md"))
                 .findFirst()
                 .orElse(null);
@@ -82,8 +82,8 @@ public class GitHubMarkdownService {
         return loadPost(file, directory.getName(), postDate);
     }
 
-    private BlogPost loadPost(GitHubFile file, String title, String date) {
-        String content = gitHubWebClient.fetchFileContent(file.getDownloadUrl());
+    private BlogPostDTO loadPost(GitHubFileDTO file, String title, String date) {
+        String content = gitHubClient.fetchFileContent(file.getDownloadUrl());
 
         if (content == null) return null;
 
@@ -106,6 +106,6 @@ public class GitHubMarkdownService {
         String previewHtml = renderer.render(parser.parse(previewContent));
         String html = renderer.render(parser.parse(content));
 
-        return new BlogPost(title, date, previewHtml, html, postViewsService.getPostViews(title).getViews());
+        return new BlogPostDTO(title, date, previewHtml, html, postViewsService.getPostViews(title).getViews());
     }
 }

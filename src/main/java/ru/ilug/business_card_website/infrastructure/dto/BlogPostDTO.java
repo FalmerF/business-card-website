@@ -1,11 +1,10 @@
-package ru.ilug.business_card_website.data.model;
+package ru.ilug.business_card_website.infrastructure.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
-public final class BlogPost {
+public final class BlogPostDTO {
 
     private final String title;
     private final String date;

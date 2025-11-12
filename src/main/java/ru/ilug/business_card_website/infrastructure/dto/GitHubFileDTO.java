@@ -1,12 +1,10 @@
-package ru.ilug.business_card_website.data.model;
+package ru.ilug.business_card_website.infrastructure.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class GitHubFile {
+@Data
+public class GitHubFileDTO {
 
     private String name;
     @JsonProperty("download_url")

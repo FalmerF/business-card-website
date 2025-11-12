@@ -1,11 +1,11 @@
-package ru.ilug.business_card_website;
+package ru.ilug.business_card_website.config;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import ru.ilug.business_card_website.data.model.Skill;
-import ru.ilug.business_card_website.data.model.Work;
+import ru.ilug.business_card_website.infrastructure.dto.SkillDTO;
+import ru.ilug.business_card_website.infrastructure.dto.WorkDTO;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @ConfigurationProperties("career")
 public class CareerConfiguration {
 
-    private List<Skill> skills;
-    private List<Work> works;
+    private List<SkillDTO> skills;
+    private List<WorkDTO> works;
 
 }

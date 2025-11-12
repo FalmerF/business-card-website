@@ -1,15 +1,15 @@
-package ru.ilug.business_card_website.web;
+package ru.ilug.business_card_website.infrastructure.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import ru.ilug.business_card_website.data.model.GitHubFile;
+import ru.ilug.business_card_website.infrastructure.dto.GitHubFileDTO;
 
 import java.util.List;
 
 @Component
-public class GitHubWebClient {
+public class GitHubClient {
 
     private final WebClient webClient;
 
@@ -20,18 +20,18 @@ public class GitHubWebClient {
     @Value("${github.branch}")
     private String branch;
 
-    public GitHubWebClient(@Value("${github.token}") String token) {
+    public GitHubClient(@Value("${github.token}") String token) {
         webClient = WebClient.builder()
                 .baseUrl("https://api.github.com")
                 .defaultHeader(HttpHeaders.AUTHORIZATION, "token " + token)
                 .build();
     }
 
-    public List<GitHubFile> fetchDirectoryFiles(String path) {
+    public List<GitHubFileDTO> fetchDirectoryFiles(String path) {
         return webClient.get()
                 .uri(String.format("/repos/%s/%s/contents%s?ref=%s", owner, repo, path, branch))
                 .retrieve()
-                .bodyToFlux(GitHubFile.class)
+                .bodyToFlux(GitHubFileDTO.class)
                 .collectList()
                 .block();
     }

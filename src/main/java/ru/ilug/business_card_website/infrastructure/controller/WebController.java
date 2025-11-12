@@ -1,4 +1,4 @@
-package ru.ilug.business_card_website.web;
+package ru.ilug.business_card_website.infrastructure.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import ru.ilug.business_card_website.CareerConfiguration;
-import ru.ilug.business_card_website.data.model.BlogPost;
-import ru.ilug.business_card_website.service.GitHubMarkdownService;
-import ru.ilug.business_card_website.service.PostViewsService;
+import ru.ilug.business_card_website.config.CareerConfiguration;
+import ru.ilug.business_card_website.infrastructure.dto.BlogPostDTO;
+import ru.ilug.business_card_website.data.service.markdown.GitHubMarkdownService;
+import ru.ilug.business_card_website.data.service.PostViewsService;
 
 import java.util.Collection;
 
@@ -34,7 +34,7 @@ public class WebController {
 
     @GetMapping("/blog")
     public String blog(Model model) {
-        Collection<BlogPost> posts = gitHubMarkdownService.getPostMap().values();
+        Collection<BlogPostDTO> posts = gitHubMarkdownService.getPostMap().values();
         model.addAttribute("posts", posts);
 
         return "blog";
@@ -44,7 +44,7 @@ public class WebController {
     public String fullPost(@PathVariable String slug, Model model) {
         int views = postViewsService.incrementPostViews(slug);
 
-        BlogPost post = gitHubMarkdownService.getPostMap().get(slug);
+        BlogPostDTO post = gitHubMarkdownService.getPostMap().get(slug);
         post.setViews(views);
 
         model.addAttribute("post", post);
