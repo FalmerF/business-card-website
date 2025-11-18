@@ -1,7 +1,5 @@
 /* Main container */
 .post-content {
-    font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-    color: #222;
     line-height: 1.7;
     font-size: 1rem;
     max-width: 800px;
@@ -22,7 +20,7 @@
 }
 
 .post-content h1 { font-size: 2em; }
-.post-content h2 { font-size: 1.6em; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; }
+.post-content h2 { font-size: 1.6em; border-bottom: var(--border-normal); padding-bottom: 0.3em; }
 .post-content h3 { font-size: 1.3em; }
 .post-content h4 { font-size: 1.1em; }
 
@@ -46,6 +44,7 @@
     max-width: 100%;
     height: auto;
     margin: 1em 0;
+    border: var(--border-normal);
     border-radius: var(--border-radius-normal);
 }
 
@@ -59,12 +58,13 @@
 
 .post-content th,
 .post-content td {
-    border: 1px solid #ddd;
+    background-color: var(--color-highlight);
+    border: var(--border-normal);
     padding: 0.6em;
 }
 
 .post-content th {
-    background-color: #f3f3f3;
+    background-color: rgb(20, 23, 26);
     text-align: left;
 }
 
@@ -81,7 +81,7 @@
 /* Separators */
 .post-content hr {
     border: none;
-    border-top: 1px solid #ddd;
+    border-top: var(--border-normal);
     margin: 2em 0;
 }
 
@@ -92,6 +92,8 @@
     border-radius: var(--border-radius-normal);
     font-size: 0.95em;
     margin: 1.2em 0;
+    background-color: var(--color-highlight);
+    border: var(--border-normal);
 }
 
 .post-content pre code {
@@ -115,9 +117,14 @@
 .post-content blockquote {
     margin: 1em 0;
     padding-left: 1em;
+    border: var(--border-normal);
     border-left: 4px solid #555;
     background-color: var(--color-highlight);
     color: #ccc;
     font-style: italic;
     border-radius: var(--border-radius-small);
+}
+
+.post-content blockquote p {
+    margin: 0;
 }

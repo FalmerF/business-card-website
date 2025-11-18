@@ -1,25 +1,18 @@
 career:
   skills:
     - name: Java 8-17
-      icon: java.svg
-    - name: Spring
-      icon: spring.svg
+    - name: Spring Framework
     - name: Hibernate
-      icon: hibernate.svg
+    - name: JPA
     - name: JavaFX
-      icon: java.svg
     - name: PostgreSQL
-      icon: postgresql.svg
+    - name: MySQL
     - name: MongoDB
-      icon: mongodb.svg
-    - name: Docker
-      icon: docker.svg
-    - name: HashiCorp Vault
-      icon: vault.svg
-    - name: Gradle
-      icon: gradle.svg
     - name: RabbitMQ
-      icon: rabbitmq.svg
+    - name: Docker
+    - name: HashiCorp Vault
+    - name: Gradle
+    - name: Clean Code
   works:
     - name: Forte Holding GmbH
       legalName: ООО «ФОРТЕ ХОУМ ГМБХ»

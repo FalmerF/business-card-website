@@ -1,34 +1,47 @@
 :root {
+    --background-color: rgb(27, 31, 35);
+    --text-color: rgb(208, 213, 218);
+    --text-color-second: rgb(143, 155, 168);
+
     --border-radius-small: 4px;
     --border-radius-normal: 6px;
 
-    --color-highlight: #2d2d2d;
+    --border-normal: 1px solid rgb(59, 68, 76);
+
+    --tag-color: rgba(114, 130, 146, 0.294);
+
+    --color-highlight: rgb(26, 29, 31);
+
+    --primary-color: rgb(65, 131, 196);
+
+    --fonts-proportional: -apple-system, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial;
+    --fonts-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, var(--fonts-proportional);
     text-align: center;
-    background: #f4f4f4;
+    background: var(--background-color);
     padding: 50px;
     padding-top: 125px;
+    color: var(--text-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 .page {
     display: flex;
     flex-direction: column;
-    margin: 100px auto 200px auto;
-    max-width: 600px;
+    margin: 150px auto 0 auto;
+    max-width: 650px;
     width: -webkit-fill-available;
     gap: 30px;
-}
-
-.card {
-    padding: 25px;
-    box-shadow: 0 0 50px #CECECE;
-    border-radius: 16px;
 }
 
 .main-info {
@@ -42,7 +55,8 @@ body {
 .avatar {
     width: 150px;
     height: 150px;
-    border-radius: 16px;
+    border: var(--border-normal);
+    border-radius: var(--border-radius-normal);
 }
 
 .main-info h1 {
@@ -55,12 +69,9 @@ body {
     flex-wrap: wrap;
     margin-top: 20px;
     gap: 10px;
-    font-size: 18px;
 }
 
 .contact-line a {
-    color: #0366d6;
-    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -75,8 +86,8 @@ body {
 }
 
 .contact-line img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
 }
 
 .skills {
@@ -89,11 +100,11 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background-color: #e4e4e4;
-    color: #333;
-    padding: 6px 10px;
-    border-radius: 10px;
+    background-color: var(--tag-color);
+    padding: 5px;
+    border-radius: var(--border-radius-small);
     font-size: 14px;
+    font-family: var(--fonts-monospace);
 }
 
 .tag img {

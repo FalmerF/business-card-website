@@ -34,7 +34,7 @@
 }
 
 .work-tasks {
-    border-top: 1px solid #ccc;
+    border-top: var(--border-normal);
     width: -webkit-fill-available;
     margin-top: 25px;
 }
