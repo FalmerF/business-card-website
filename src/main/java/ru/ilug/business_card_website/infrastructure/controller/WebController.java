@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.ilug.business_card_website.config.CareerConfiguration;
 import ru.ilug.business_card_website.infrastructure.dto.BlogPostDTO;
-import ru.ilug.business_card_website.data.service.markdown.GitHubMarkdownService;
+import ru.ilug.business_card_website.data.service.PostsService;
 import ru.ilug.business_card_website.data.service.PostViewsService;
 
 import java.util.Collection;
@@ -20,7 +20,7 @@ import java.util.Collection;
 public class WebController {
 
     private final CareerConfiguration configuration;
-    private final GitHubMarkdownService gitHubMarkdownService;
+    private final PostsService postsService;
     private final PostViewsService postViewsService;
 
     @GetMapping("/")
@@ -34,7 +34,7 @@ public class WebController {
 
     @GetMapping("/blog")
     public String blog(Model model) {
-        Collection<BlogPostDTO> posts = gitHubMarkdownService.getPostMap().values();
+        Collection<BlogPostDTO> posts = postsService.getPostMap().values();
         model.addAttribute("posts", posts);
 
         return "blog";
@@ -44,7 +44,7 @@ public class WebController {
     public String fullPost(@PathVariable String slug, Model model) {
         int views = postViewsService.incrementPostViews(slug);
 
-        BlogPostDTO post = gitHubMarkdownService.getPostMap().get(slug);
+        BlogPostDTO post = postsService.getPostMap().get(slug);
         post.setViews(views);
 
         model.addAttribute("post", post);

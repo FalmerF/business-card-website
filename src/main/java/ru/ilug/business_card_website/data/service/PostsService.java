@@ -1,4 +1,4 @@
-package ru.ilug.business_card_website.data.service.markdown;
+package ru.ilug.business_card_website.data.service;
 
 import com.vladsch.flexmark.ext.autolink.AutolinkExtension;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
@@ -9,13 +9,12 @@ import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import ru.ilug.business_card_website.data.service.markdown.CustomLinkResolverFactory;
+import ru.ilug.business_card_website.infrastructure.client.GiteaClient;
 import ru.ilug.business_card_website.infrastructure.dto.BlogPostDTO;
-import ru.ilug.business_card_website.infrastructure.dto.GitHubFileDTO;
-import ru.ilug.business_card_website.data.service.PostViewsService;
-import ru.ilug.business_card_website.infrastructure.client.GitHubClient;
+import ru.ilug.business_card_website.infrastructure.dto.GiteaFileDTO;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,7 +22,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class GitHubMarkdownService {
+public class PostsService {
 
     private final List<Extension> flexmarkExtensions = List.of(
             TablesExtension.create(),
@@ -34,18 +33,11 @@ public class GitHubMarkdownService {
             .extensions(flexmarkExtensions)
             .build();
 
-    private final GitHubClient gitHubClient;
+    private final GiteaClient gitClient;
     private final PostViewsService postViewsService;
 
     @Getter
     private Map<String, BlogPostDTO> postMap = new HashMap<>();
-
-    @Value("${github.owner}")
-    private String owner;
-    @Value("${github.repo}")
-    private String repo;
-    @Value("${github.branch}")
-    private String branch;
 
     @PostConstruct
     public void init() {
@@ -60,14 +52,14 @@ public class GitHubMarkdownService {
     }
 
     private Map<String, BlogPostDTO> fetchAllPosts() {
-        return gitHubClient.fetchDirectoryFiles("").stream()
+        return gitClient.fetchDirectoryFiles("").stream()
                 .map(this::fetchPost)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toMap(BlogPostDTO::getTitle, p -> p));
     }
 
-    private BlogPostDTO fetchPost(GitHubFileDTO directory) {
-        GitHubFileDTO file = gitHubClient.fetchDirectoryFiles("/" + directory.getName())
+    private BlogPostDTO fetchPost(GiteaFileDTO directory) {
+        GiteaFileDTO file = gitClient.fetchDirectoryFiles("/" + directory.getName())
                 .stream().filter(f -> f.getName().endsWith(".md"))
                 .findFirst()
                 .orElse(null);
@@ -82,12 +74,12 @@ public class GitHubMarkdownService {
         return loadPost(file, directory.getName(), postDate);
     }
 
-    private BlogPostDTO loadPost(GitHubFileDTO file, String title, String date) {
-        String content = gitHubClient.fetchFileContent(file.getDownloadUrl());
+    private BlogPostDTO loadPost(GiteaFileDTO file, String title, String date) {
+        String content = gitClient.fetchFileContent(file.getDownloadUrl());
 
         if (content == null) return null;
 
-        String baseUrl = String.format("https://raw.githubusercontent.com/%s/%s/refs/heads/%s/%s/", owner, repo, branch, title);
+        String baseUrl = gitClient.getContentBaseUrl(title);
 
         HtmlRenderer renderer = HtmlRenderer.builder()
                 .extensions(flexmarkExtensions)
