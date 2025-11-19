@@ -3,7 +3,11 @@
     max-width: 600px;
     width: -webkit-fill-available;
     justify-self: center;
-    padding-bottom: 125px;
+    margin-bottom: 125px;
+}
+
+.work:last-child {
+    margin-bottom: 0;
 }
 
 .work-header {
