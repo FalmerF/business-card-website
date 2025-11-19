@@ -19,8 +19,9 @@ public class CustomLinkResolver implements LinkResolver {
 
         if (url.startsWith("./")) {
             url = url.substring(2);
+            return link.withUrl(baseUrl + url);
         }
 
-        return link.withUrl(baseUrl + url);
+        return link;
     }
 }
