@@ -1,6 +1,7 @@
 package ru.ilug.business_card_website.data.service;
 
 import com.vladsch.flexmark.ext.autolink.AutolinkExtension;
+import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
@@ -26,7 +27,8 @@ public class PostsService {
 
     private final List<Extension> flexmarkExtensions = List.of(
             TablesExtension.create(),
-            AutolinkExtension.create()
+            AutolinkExtension.create(),
+            StrikethroughExtension.create()
     );
 
     private final Parser parser = Parser.builder()
