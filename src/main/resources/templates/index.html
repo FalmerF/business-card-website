@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Иван Луговой</title>
-    <link rel="icon" type="image/png" th:href="@{/icons/logo.png}" />
+
+    <meta name="title" th:content="${baseInfo.fullName} + ' - ' + ${baseInfo.jobTitle}">
+    <meta property="og:title" th:content="${baseInfo.fullName} + ' - ' + ${baseInfo.jobTitle}">
+    <meta property="og:type" th:content="website">
+
+    <meta name="description" th:content="${baseInfo.status}">
+    <meta property="og:description" th:content="${baseInfo.status}">
+
+    <meta name="keywords" th:content="${baseInfo.fullName} + ', ' + ${baseInfo.jobTitle}">
+
+    <title th:text="${baseInfo.fullName}"></title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/icons/logo.png}" />
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/career.css}">
@@ -15,8 +25,8 @@
     <div class="main-info">
         <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
         <div style="min-width: 150px; max-width: 550px;">
-            <h1>Иван Луговой</h1>
-            <p>Более-менее профессиональный разработчик на каких-то более-менее полезных языках.</p>
+            <h1 th:text="${baseInfo.fullName}"></h1>
+            <p th:text="${baseInfo.status}"></p>
 
             <div class="contact-line">
                 <a href="https://vk.com/ilug0" target="_blank" aria-label="VK">

@@ -27,6 +27,7 @@ public class WebController {
     @GetMapping("/")
     @Cacheable("indexHtmlCache")
     public String index(Model model) {
+        model.addAttribute("baseInfo", configuration.getBaseInfo());
         model.addAttribute("skills", configuration.getSkills());
         model.addAttribute("works", configuration.getWorks());
         model.addAttribute("workExperience", WorkUtil.calculateAndFormatWorkExperience(configuration.getWorks()));
