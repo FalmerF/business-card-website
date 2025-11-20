@@ -14,17 +14,21 @@
 <div class="page card">
     <div class="main-info">
         <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
-        <div style="min-width: 150px; max-width: 430px;">
+        <div style="min-width: 150px; max-width: 550px;">
             <h1>Иван Луговой</h1>
             <p>Более-менее профессиональный разработчик на каких-то более-менее полезных языках.</p>
 
             <div class="contact-line">
-                <a href="https://github.com/FalmerF" target="_blank" aria-label="GitHub">
-                    <img src="/icons/github.svg" alt="GitHub"> GitHub
-                </a>
-                <span class="separator">/</span>
                 <a href="https://vk.com/ilug0" target="_blank" aria-label="VK">
                     <img src="/icons/vk.svg" alt="VK"> ВКонтакте
+                </a>
+                <span class="separator">/</span>
+                <a href="https://hh.ru/resume/fef400acff0ca2c86a0039ed1f4b6c5566746a" target="_blank" aria-label="HH">
+                    <img src="/icons/hh.png" alt="HH"> HH
+                </a>
+                <span class="separator">/</span>
+                <a href="https://github.com/FalmerF" target="_blank" aria-label="GitHub">
+                    <img src="/icons/github.svg" alt="GitHub"> GitHub
                 </a>
             </div>
         </div>
@@ -38,30 +42,34 @@
 </div>
 
 <div class="page">
-    <h1>Карьера</h1>
+    <h2 class="career-title" th:text="'Опыт работы: ' + ${workExperience}"></h2>
 
     <div class="work" th:each="work : ${works}">
         <div class="work-header">
-            <img th:src="'/icons/work/' + ${work.icon}" src="" alt="">
+            <img th:src="'/icons/work/' + ${work.icon}" th:if="${work.icon != null}" src="" alt="">
             <h2 th:text="${work.name}"></h2>
         </div>
         <div class="work-info">
-            <div class="work-value">
+            <div class="work-value" th:if="${work.legalName != null}">
                 <span>Наименование:</span>
                 <span th:text="${work.legalName}"></span>
             </div>
-            <div class="work-value">
+            <div class="work-value" th:if="${work.position != null}">
                 <span>Позиция:</span>
                 <span th:text="${work.position}"></span>
             </div>
             <div class="work-value">
                 <span>Время работы:</span>
-                <span th:text="${work.period}"></span>
+                <span th:text="${work.period.displayText}"></span>
             </div>
         </div>
-        <div class="work-tasks">
+        <div class="work-tasks" th:if="${not #lists.isEmpty(work.tasks)}">
             <h3>Задачи</h3>
-            <p th:text="${work.tasks}"></p>
+            <p th:each="task : ${work.tasks}" th:text="${task}"></p>
+        </div>
+        <div class="work-tasks" th:if="${not #lists.isEmpty(work.progress)}">
+            <h3>Достижения</h3>
+            <p th:each="progress : ${work.progress}" th:text="${progress}"></p>
         </div>
         <div class="work-stack">
             <h3>Стек</h3>

@@ -15,8 +15,18 @@ public class WorkDTO {
     private String legalName;
     private String icon;
     private String position;
-    private String period;
-    private String tasks;
+    private Period period;
+    private List<String> tasks;
+    private List<String> progress;
     private List<String> stack;
+
+    @Data
+    public static class Period {
+
+        private String displayText;
+        private long startMillis;
+        private long endMillis;
+
+    }
 
 }

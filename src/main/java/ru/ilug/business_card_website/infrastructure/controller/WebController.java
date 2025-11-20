@@ -11,6 +11,7 @@ import ru.ilug.business_card_website.config.CareerConfiguration;
 import ru.ilug.business_card_website.infrastructure.dto.BlogPostDTO;
 import ru.ilug.business_card_website.data.service.PostsService;
 import ru.ilug.business_card_website.data.service.PostViewsService;
+import ru.ilug.business_card_website.util.WorkUtil;
 
 import java.util.Collection;
 
@@ -28,6 +29,7 @@ public class WebController {
     public String index(Model model) {
         model.addAttribute("skills", configuration.getSkills());
         model.addAttribute("works", configuration.getWorks());
+        model.addAttribute("workExperience", WorkUtil.calculateAndFormatWorkExperience(configuration.getWorks()));
 
         return "index";
     }
