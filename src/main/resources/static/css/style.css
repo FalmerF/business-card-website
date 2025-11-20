@@ -1,18 +1,20 @@
 :root {
-    --background-color: rgb(27, 31, 35);
-    --text-color: rgb(208, 213, 218);
-    --text-color-second: rgb(143, 155, 168);
+    --background-color: rgb(28, 28, 28);
+
+    --foreground-color-1: rgb(26, 26, 26);
+    --foreground-color-2: rgb(20, 20, 20);
+
+    --tag-color: rgba(130, 130, 130, 0.294);
+
+    --primary-color: #337dbd;
+
+    --text-color-1: rgb(255, 255, 255);
+    --text-color-2: rgb(180, 175, 182);
 
     --border-radius-small: 4px;
     --border-radius-normal: 6px;
 
-    --border-normal: 1px solid rgb(59, 68, 76);
-
-    --tag-color: rgba(114, 130, 146, 0.294);
-
-    --color-highlight: rgb(26, 29, 31);
-
-    --primary-color: rgb(65, 131, 196);
+    --border-normal: 1px solid rgb(68, 68, 68);
 
     --fonts-proportional: -apple-system, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial;
     --fonts-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -23,15 +25,26 @@
 
 body {
     font-family: Arial, var(--fonts-proportional);
+    font-size: 1rem;
     text-align: center;
+    line-height: 1.7;
     background: var(--background-color);
-    padding: 0 50px;
-    color: var(--text-color);
+    padding: 0 15px;
+    color: var(--text-color-2);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color-1);
 }
 
 a {
     color: var(--primary-color);
     text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .page {
@@ -56,8 +69,8 @@ a {
 }
 
 .avatar {
-    width: 150px;
-    height: 150px;
+    width: 178px;
+    height: 178px;
     border: var(--border-normal);
     border-radius: var(--border-radius-normal);
 }
@@ -80,10 +93,6 @@ a {
     gap: 6px;
 }
 
-.contact-line a:hover {
-    text-decoration: underline;
-}
-
 .contact-line span.separator {
     color: #888;
 }
@@ -104,7 +113,7 @@ a {
     align-items: center;
     gap: 5px;
     background-color: var(--tag-color);
-    padding: 5px;
+    padding: 0 5px;
     border-radius: var(--border-radius-small);
     font-size: 14px;
     font-family: var(--fonts-monospace);

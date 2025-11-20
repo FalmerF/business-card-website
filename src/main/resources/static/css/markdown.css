@@ -1,8 +1,6 @@
 /* Main container */
 .post-content {
-    line-height: 1.7;
     font-size: 1rem;
-    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -13,10 +11,18 @@
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-    margin-top: 1.5em;
     margin-bottom: 0.5em;
     font-weight: 600;
     line-height: 1.3;
+}
+
+.post-content h1:not(:first-child),
+.post-content h2:not(:first-child),
+.post-content h3:not(:first-child),
+.post-content h4:not(:first-child),
+.post-content h5:not(:first-child),
+.post-content h6:not(:first-child) {
+    margin-top: 1.5em;
 }
 
 .post-content h1 { font-size: 2em; }
@@ -60,24 +66,14 @@
 
 .post-content th,
 .post-content td {
-    background-color: var(--color-highlight);
+    background-color: var(--foreground-color-1);
     border: var(--border-normal);
     padding: 0.6em;
 }
 
 .post-content th {
-    background-color: rgb(20, 23, 26);
+    background-color: var(--foreground-color-2);
     text-align: left;
-}
-
-/* Links */
-.post-content a {
-    color: #0d6efd;
-    text-decoration: underline;
-}
-
-.post-content a:hover {
-    text-decoration: none;
 }
 
 /* Separators */
@@ -94,7 +90,7 @@
     border-radius: var(--border-radius-normal);
     font-size: 0.95em;
     margin: 1.2em 0;
-    background-color: var(--color-highlight);
+    background-color: var(--foreground-color-1);
     border: var(--border-normal);
 }
 
@@ -108,7 +104,7 @@
 
 /* Code highlight */
 .post-content code {
-    background-color: var(--color-highlight);
+    background-color: var(--foreground-color-1);
     color: #f8f8f2;
     padding: 0.2em 0.4em;
     border: var(--border-normal);
@@ -123,7 +119,7 @@
     padding-left: 1em;
     border: var(--border-normal);
     border-left: 4px solid #555;
-    background-color: var(--color-highlight);
+    background-color: var(--foreground-color-1);
     color: #ccc;
     font-style: italic;
     border-radius: var(--border-radius-small);
