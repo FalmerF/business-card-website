@@ -1,5 +1,6 @@
 package ru.ilug.business_card_website.infrastructure.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
@@ -26,7 +27,8 @@ public class WebController {
 
     @GetMapping("/")
     @Cacheable("indexHtmlCache")
-    public String index(Model model) {
+    public String index(HttpServletRequest request, Model model) {
+        model.addAttribute("currentUrl", request.getRequestURL());
         model.addAttribute("baseInfo", configuration.getBaseInfo());
         model.addAttribute("skills", configuration.getSkills());
         model.addAttribute("works", configuration.getWorks());

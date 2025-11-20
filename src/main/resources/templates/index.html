@@ -7,6 +7,8 @@
     <meta name="title" th:content="${baseInfo.fullName} + ' - ' + ${baseInfo.jobTitle}">
     <meta property="og:title" th:content="${baseInfo.fullName} + ' - ' + ${baseInfo.jobTitle}">
     <meta property="og:type" th:content="website">
+    <meta property="og:url" th:content="${currentUrl}">
+    <meta property="og:image" th:content="@{/icons/logo.png}">
 
     <meta name="description" th:content="${baseInfo.status}">
     <meta property="og:description" th:content="${baseInfo.status}">
