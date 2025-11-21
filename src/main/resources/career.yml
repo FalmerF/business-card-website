@@ -41,7 +41,7 @@ career:
       icon: vimeworld.ico
       position: Java-разработчик
       period:
-        displayText: Март 2025 — Май 2025
+        displayText: Март 2025 — Апрель 2025
         startMillis: 1740690000000
         endMillis: 1745960400000
       tasks:
@@ -53,8 +53,8 @@ career:
       icon: cristalix.png
       position: Java-разработчик
       period:
-        displayText: Ноябрь 2022 — Октябрь 2024
-        startMillis: 1667163600000
+        displayText: Октябрь 2022 — Сентябрь 2024
+        startMillis: 1664485200000
         endMillis: 1727643600000
       tasks:
         - "• Проектирование и разработка инструмента создания графического пользовательского интерфейса на основе OpenGL."
@@ -65,9 +65,9 @@ career:
       stack: Java 8, OpenGL, GLSL, Java Compiler, MongoDB, Gradle
     - name: Junior Java Developer (Self-Directed Training)
       period:
-        displayText: Июнь 2020 - Ноябрь 2022
+        displayText: Июнь 2020 - Сентябрь 2022
         startMillis: 1590872400000
-        endMillis: 1667163600000
+        endMillis: 1664485200000
       progress:
         - "• Самостоятельно освоил Java Core (ООП, Collections, Stream API, многопоточность)."
         - "• Изучал принципы REST, работу с базами данных, основы Git и Gradle."
