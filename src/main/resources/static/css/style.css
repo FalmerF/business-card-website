@@ -76,7 +76,7 @@ a:hover {
     width: 160px;
     height: 160px;
     border: var(--border-normal);
-    border-radius: var(--border-radius-normal);
+    border-radius: 16px;
 }
 
 .main-info h1 {

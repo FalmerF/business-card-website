@@ -8,7 +8,7 @@
     <meta property="og:title" th:content="${baseInfo.fullName} + ' - ' + ${baseInfo.jobTitle}">
     <meta property="og:type" th:content="website">
     <meta property="og:url" th:content="${currentUrl}">
-    <meta property="og:image" th:content="@{/icons/logo.png}">
+    <meta property="og:image" th:content="${currentUrl} + 'icons/photo.jpg'">
 
     <meta name="description" th:content="${baseInfo.status}">
     <meta property="og:description" th:content="${baseInfo.status}">
@@ -25,7 +25,7 @@
 
 <div class="page card">
     <div class="main-info">
-        <img class="avatar" src="https://avatars.githubusercontent.com/u/79121988" alt="Avatar">
+        <img class="avatar" th:src="@{/icons/photo.jpg}" alt="Avatar">
         <div style="min-width: 150px; max-width: 550px;">
             <h1 th:text="${baseInfo.fullName}"></h1>
             <p th:text="${baseInfo.status}"></p>

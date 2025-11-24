@@ -1,3 +1,7 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bcw
+
+  devtools:
+    livereload:
+      enabled: true
