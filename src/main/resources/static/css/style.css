@@ -9,7 +9,7 @@
     --primary-color: #337dbd;
 
     --text-color-1: rgb(255, 255, 255);
-    --text-color-2: rgb(180, 175, 182);
+    --text-color-2: rgb(210, 210, 210);
 
     --border-radius-small: 4px;
     --border-radius-normal: 6px;
@@ -28,7 +28,7 @@
 }
 
 body {
-    font-family: Arial, var(--fonts-proportional);
+    font-family: var(--fonts-proportional);
     font-size: 1rem;
     text-align: center;
     line-height: 1.7;
