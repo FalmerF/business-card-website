@@ -3,6 +3,22 @@ career:
     fullName: Иван Луговой
     jobTitle: Java-разработчик
     status: Более-менее профессиональный разработчик на каких-то более-менее полезных языках.
+  links:
+    - name: ВКонтакте
+      url: https://vk.com/ilug0
+      icon: /icons/vk.svg
+    - name: HH
+      url: https://hh.ru/resume/fef400acff0ca2c86a0039ed1f4b6c5566746a
+      icon: /icons/hh.png
+    - name: GitHub
+      url: https://github.com/FalmerF
+      icon: /icons/github.svg
+    - name: Habr
+      url: https://habr.com/ru/users/FalmerF/
+      icon: /icons/habr.svg
+    - name: Блог
+      url: /blog
+      icon: /icons/logo.png
   skills:
     - name: Java 8-17
     - name: Spring Framework

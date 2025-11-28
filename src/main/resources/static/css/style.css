@@ -33,7 +33,6 @@ body {
     text-align: center;
     line-height: 1.7;
     background: var(--background-color);
-    padding: 0 15px;
     color: var(--text-color-2);
 }
 

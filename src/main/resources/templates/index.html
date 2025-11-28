@@ -31,17 +31,13 @@
             <p th:text="${generalInfo.status}"></p>
 
             <div class="contact-line">
-                <a href="https://vk.com/ilug0" target="_blank" aria-label="VK">
-                    <img src="/icons/vk.svg" alt="VK"> ВКонтакте
-                </a>
-                <span class="separator">/</span>
-                <a href="https://hh.ru/resume/fef400acff0ca2c86a0039ed1f4b6c5566746a" target="_blank" aria-label="HH">
-                    <img src="/icons/hh.png" alt="HH"> HH
-                </a>
-                <span class="separator">/</span>
-                <a href="https://github.com/FalmerF" target="_blank" aria-label="GitHub">
-                    <img src="/icons/github.svg" alt="GitHub"> GitHub
-                </a>
+                <th:block th:each="link, status : ${links}">
+                    <a th:href="${link.url}" th:aria-label="${link.name}" target="_blank">
+                        <img th:src="${link.icon}" th:alt="${link.name}" alt="" src="" th:text="${link.name}">
+                    </a>
+                    <span th:if="${!status.last}" class="separator">/</span>
+                </th:block>
+
             </div>
         </div>
     </div>

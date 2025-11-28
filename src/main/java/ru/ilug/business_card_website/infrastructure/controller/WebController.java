@@ -35,6 +35,7 @@ public class WebController {
     public String index(HttpServletRequest request, Model model) {
         model.addAttribute("currentUrl", request.getRequestURL());
         model.addAttribute("generalInfo", configuration.getGeneralInfo());
+        model.addAttribute("links", configuration.getLinks());
         model.addAttribute("skills", configuration.getSkills());
         model.addAttribute("works", configuration.getWorks());
         model.addAttribute("workExperience", WorkUtil.calculateAndFormatWorkExperience(configuration.getWorks()));
@@ -44,6 +45,7 @@ public class WebController {
 
     @GetMapping("/blog")
     public Mono<String> blog(Model model) {
+        model.addAttribute("generalInfo", configuration.getGeneralInfo());
         return Flux.fromIterable(postsService.getAllPosts())
                 .map(blogPost -> {
                     PostViews views = postViewsService.getPostViews(blogPost.key());
