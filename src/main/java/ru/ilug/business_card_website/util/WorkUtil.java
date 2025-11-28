@@ -1,6 +1,6 @@
 package ru.ilug.business_card_website.util;
 
-import ru.ilug.business_card_website.infrastructure.dto.WorkDTO;
+import ru.ilug.business_card_website.infrastructure.dto.WorkDto;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -10,12 +10,12 @@ import java.util.List;
 
 public class WorkUtil {
 
-    public static String calculateAndFormatWorkExperience(List<WorkDTO> works) {
+    public static String calculateAndFormatWorkExperience(List<WorkDto> works) {
         Period workExperience = calculateWorkExperience(works);
         return formatWorkExperience(workExperience);
     }
 
-    public static Period calculateWorkExperience(List<WorkDTO> works) {
+    public static Period calculateWorkExperience(List<WorkDto> works) {
         List<Period> periods = new java.util.ArrayList<>(works.stream()
                 .map(WorkUtil::getWorkPeriodDuration)
                 .toList());
@@ -28,8 +28,8 @@ public class WorkUtil {
         return periods.get(0).normalized();
     }
 
-    public static Period getWorkPeriodDuration(WorkDTO work) {
-        WorkDTO.Period period = work.getPeriod();
+    public static Period getWorkPeriodDuration(WorkDto work) {
+        WorkDto.Period period = work.getPeriod();
 
         ZoneId zoneId = ZoneId.systemDefault();
 

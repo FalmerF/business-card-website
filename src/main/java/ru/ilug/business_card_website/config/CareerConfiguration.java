@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import ru.ilug.business_card_website.infrastructure.dto.BaseInfoDTO;
-import ru.ilug.business_card_website.infrastructure.dto.SkillDTO;
-import ru.ilug.business_card_website.infrastructure.dto.WorkDTO;
+import ru.ilug.business_card_website.infrastructure.dto.GeneralInfoDto;
+import ru.ilug.business_card_website.infrastructure.dto.SkillDto;
+import ru.ilug.business_card_website.infrastructure.dto.WorkDto;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ import java.util.List;
 @ConfigurationProperties("career")
 public class CareerConfiguration {
 
-    private BaseInfoDTO baseInfo;
-    private List<SkillDTO> skills;
-    private List<WorkDTO> works;
+    private GeneralInfoDto generalInfo;
+    private List<SkillDto> skills;
+    private List<WorkDto> works;
 
 }

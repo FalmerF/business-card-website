@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class MetadataDTO {
+public class MetadataDto {
 
     private String displayName;
     private String description;

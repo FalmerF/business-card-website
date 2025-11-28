@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="title" th:content="${baseInfo.fullName} + ' - ' + ${baseInfo.jobTitle}">
-    <meta property="og:title" th:content="${baseInfo.fullName} + ' - ' + ${baseInfo.jobTitle}">
+    <meta name="title" th:content="${generalInfo.fullName} + ' - ' + ${generalInfo.jobTitle}">
+    <meta property="og:title" th:content="${generalInfo.fullName} + ' - ' + ${generalInfo.jobTitle}">
     <meta property="og:type" th:content="website">
     <meta property="og:url" th:content="${currentUrl}">
     <meta property="og:image" th:content="${currentUrl} + 'icons/photo.jpg'">
 
-    <meta name="description" th:content="${baseInfo.status}">
-    <meta property="og:description" th:content="${baseInfo.status}">
+    <meta name="description" th:content="${generalInfo.status}">
+    <meta property="og:description" th:content="${generalInfo.status}">
 
-    <meta name="keywords" th:content="${baseInfo.fullName} + ', ' + ${baseInfo.jobTitle}">
+    <meta name="keywords" th:content="${generalInfo.fullName} + ', ' + ${generalInfo.jobTitle}">
 
-    <title th:text="${baseInfo.fullName}"></title>
+    <title th:text="${generalInfo.fullName}"></title>
     <link rel="shortcut icon" type="image/png" th:href="@{/icons/logo.png}" />
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -27,8 +27,8 @@
     <div class="main-info">
         <img class="avatar" th:src="@{/icons/photo.jpg}" alt="Avatar">
         <div style="min-width: 150px; max-width: 550px;">
-            <h1 th:text="${baseInfo.fullName}"></h1>
-            <p th:text="${baseInfo.status}"></p>
+            <h1 th:text="${generalInfo.fullName}"></h1>
+            <p th:text="${generalInfo.status}"></p>
 
             <div class="contact-line">
                 <a href="https://vk.com/ilug0" target="_blank" aria-label="VK">

@@ -5,13 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.ilug.business_card_website.util.WorkUtil;
 
-import java.time.Period;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WorkDTO {
+public class WorkDto {
 
     private String name;
     private String legalName;

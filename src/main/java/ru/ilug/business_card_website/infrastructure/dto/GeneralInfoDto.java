@@ -3,7 +3,7 @@ package ru.ilug.business_card_website.infrastructure.dto;
 import lombok.Data;
 
 @Data
-public class BaseInfoDTO {
+public class GeneralInfoDto {
 
     private String fullName;
     private String jobTitle;

@@ -1,23 +1,20 @@
 package ru.ilug.business_card_website.data.service;
 
-import com.vladsch.flexmark.ext.autolink.AutolinkExtension;
-import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
-import com.vladsch.flexmark.ext.tables.TablesExtension;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.misc.Extension;
 import jakarta.annotation.Nullable;
 import jakarta.annotation.PostConstruct;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import ru.ilug.business_card_website.data.model.RawBlogPost;
 import ru.ilug.business_card_website.data.service.markdown.CustomLinkResolverFactory;
 import ru.ilug.business_card_website.infrastructure.client.GiteaClient;
-import ru.ilug.business_card_website.infrastructure.dto.BlogPostDTO;
-import ru.ilug.business_card_website.infrastructure.dto.GiteaFileDTO;
-import ru.ilug.business_card_website.infrastructure.dto.MetadataDTO;
+import ru.ilug.business_card_website.data.model.BlogPost;
+import ru.ilug.business_card_website.infrastructure.dto.GiteaFileDto;
+import ru.ilug.business_card_website.infrastructure.dto.MetadataDto;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,25 +24,24 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostsService {
 
-    private final List<Extension> flexmarkExtensions = List.of(
-            TablesExtension.create(),
-            AutolinkExtension.create(),
-            StrikethroughExtension.create()
-    );
-
-    private final Parser parser = Parser.builder()
-            .extensions(flexmarkExtensions)
-            .build();
-
+    private final List<Extension> flexmarkExtensions;
+    private final Parser flexmarkParser;
     private final GiteaClient gitClient;
-    private final PostViewsService postViewsService;
 
-    @Getter
-    private Map<String, BlogPostDTO> postMap = new HashMap<>();
+    private Map<String, BlogPost> postMap = new HashMap<>();
 
     @PostConstruct
     public void init() {
         updatePosts();
+    }
+
+    @Nullable
+    public BlogPost findPost(String key) {
+        return postMap.get(key);
+    }
+
+    public Collection<BlogPost> getAllPosts() {
+        return postMap.values();
     }
 
     @Async
@@ -55,62 +51,43 @@ public class PostsService {
         log.info("Posts successful updated!");
     }
 
-    private Map<String, BlogPostDTO> fetchAllPosts() {
+    private Map<String, BlogPost> fetchAllPosts() {
         return gitClient.fetchDirectoryFiles("").stream()
-                .map(this::fetchPost)
+                .map(this::fetchRawBlogPost)
                 .filter(Objects::nonNull)
-                .collect(Collectors.toMap(BlogPostDTO::getKey, p -> p));
+                .map(this::renderPost)
+                .collect(Collectors.toMap(BlogPost::key, p -> p));
     }
 
     @Nullable
-    private BlogPostDTO fetchPost(GiteaFileDTO directory) {
+    private RawBlogPost fetchRawBlogPost(GiteaFileDto directory) {
         String key = directory.getName();
 
-        List<GiteaFileDTO> files = getPostDirectoryFiles(key);
+        List<GiteaFileDto> files = getPostDirectoryFiles(key);
         String markdownContent = findAndFetchMarkdownContent(files);
 
         if (markdownContent == null) {
             return null;
         }
 
-        MetadataDTO metadata = findAndFetchMetadataContent(files);
+        MetadataDto metadata = findAndFetchMetadataContent(files);
 
         if (metadata == null) {
             return null;
         }
 
-        String baseUrl = gitClient.getContentBaseUrl(key);
-
-        HtmlRenderer renderer = HtmlRenderer.builder()
-                .extensions(flexmarkExtensions)
-                .linkResolverFactory(new CustomLinkResolverFactory(baseUrl))
-                .build();
-
-        String previewContent;
-        String[] parts = markdownContent.split("<!-- more -->");
-
-        if (parts.length != 2) {
-            previewContent = markdownContent.substring(0, Math.min(500, markdownContent.length()));
-        } else {
-            previewContent = parts[0];
-        }
-
-        String previewHtml = renderer.render(parser.parse(previewContent));
-        String html = renderer.render(parser.parse(markdownContent));
-
-        return new BlogPostDTO(key, metadata.getDisplayName(), metadata.getDescription(), metadata.getPubDate(),
-                metadata.getKeyWords(), previewHtml, html,
-                postViewsService.getPostViews(key).getViews()
+        return new RawBlogPost(key, metadata.getDisplayName(), metadata.getDescription(), metadata.getPubDate(),
+                metadata.getKeyWords(), markdownContent
         );
     }
 
-    private List<GiteaFileDTO> getPostDirectoryFiles(String directory) {
+    private List<GiteaFileDto> getPostDirectoryFiles(String directory) {
         return gitClient.fetchDirectoryFiles("/" + directory);
     }
 
     @Nullable
-    private String findAndFetchMarkdownContent(List<GiteaFileDTO> files) {
-        GiteaFileDTO markdownFile = files.stream()
+    private String findAndFetchMarkdownContent(List<GiteaFileDto> files) {
+        GiteaFileDto markdownFile = files.stream()
                 .filter(f -> f.getName().endsWith(".md"))
                 .findFirst()
                 .orElse(null);
@@ -123,8 +100,8 @@ public class PostsService {
     }
 
     @Nullable
-    private MetadataDTO findAndFetchMetadataContent(List<GiteaFileDTO> files) {
-        GiteaFileDTO metadataFile = files.stream()
+    private MetadataDto findAndFetchMetadataContent(List<GiteaFileDto> files) {
+        GiteaFileDto metadataFile = files.stream()
                 .filter(f -> ".metadata.json".equals(f.getName()))
                 .findFirst()
                 .orElse(null);
@@ -139,5 +116,32 @@ public class PostsService {
             log.error("Error on fetch metadata file", e);
             return null;
         }
+    }
+
+    private BlogPost renderPost(RawBlogPost rawBlogPost) {
+        String baseUrl = gitClient.getContentBaseUrl(rawBlogPost.key());
+
+        HtmlRenderer renderer = HtmlRenderer.builder()
+                .extensions(flexmarkExtensions)
+                .linkResolverFactory(new CustomLinkResolverFactory(baseUrl))
+                .build();
+
+        String content = rawBlogPost.content();
+
+        String previewContent;
+        String[] parts = content.split("<!-- more -->");
+
+        if (parts.length != 2) {
+            previewContent = content.substring(0, Math.min(500, content.length()));
+        } else {
+            previewContent = parts[0];
+        }
+
+        String previewHtml = renderer.render(flexmarkParser.parse(previewContent));
+        String html = renderer.render(flexmarkParser.parse(content));
+
+        return new BlogPost(rawBlogPost.key(), rawBlogPost.title(), rawBlogPost.description(),
+                rawBlogPost.date(), rawBlogPost.keyWords(), previewHtml, html
+        );
     }
 }
