@@ -4,10 +4,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.server.ResponseStatusException;
 import ru.ilug.business_card_website.config.CareerConfiguration;
 import ru.ilug.business_card_website.infrastructure.dto.BlogPostDTO;
 import ru.ilug.business_card_website.data.service.PostsService;
@@ -50,6 +56,11 @@ public class WebController {
         int views = postViewsService.incrementPostViews(slug);
 
         BlogPostDTO post = postsService.getPostMap().get(slug);
+
+        if (post == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found");
+        }
+
         post.setViews(views);
 
         model.addAttribute("post", post);

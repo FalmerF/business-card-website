@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="title" th:content="${post.title}">
+    <meta property="og:title" th:content="${post.title}">
+    <meta property="og:type" th:content="website">
+    <meta property="og:url" th:content="${currentUrl}">
+    <meta property="og:image" th:content="@{/icons/logo.png}">
+
+    <meta name="description" th:content="${post.description}">
+    <meta property="og:description" th:content="${post.description}">
+
+    <meta name="keywords" th:content="${#strings.listJoin(post.keyWords, ', ')}">
+
     <title th:text="${post.title}"></title>
     <link rel="icon" type="image/png" th:href="@{/icons/logo.png}" />
 
