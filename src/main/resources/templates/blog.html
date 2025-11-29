@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Блог</title>
-    <link rel="icon" type="image/png" th:href="@{/icons/logo.png}" />
+    <link rel="icon" type="image/png" th:href="@{/icons/logo.png}"/>
 
     <!-- Prism core -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css">
@@ -31,10 +31,7 @@
 </head>
 <body>
 <section id="blog">
-    <div id="blog-title">
-        <a th:href="@{/}"><h1 th:text="${generalInfo.fullName}"></h1></a>
-        <h1>Блог</h1>
-    </div>
+    <h1 id="blog-title">Блог</h1>
 
     <div class="post" th:each="post : ${posts}">
         <div class="post-content" th:utext="${post.previewHtmlContent}"></div>
