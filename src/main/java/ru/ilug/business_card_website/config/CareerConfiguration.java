@@ -21,5 +21,6 @@ public class CareerConfiguration {
     private List<LinkDto> links;
     private List<SkillDto> skills;
     private List<WorkDto> works;
+    private List<String> bio;
 
 }

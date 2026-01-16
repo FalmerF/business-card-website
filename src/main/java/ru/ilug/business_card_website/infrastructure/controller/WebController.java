@@ -38,6 +38,7 @@ public class WebController {
         model.addAttribute("links", configuration.getLinks());
         model.addAttribute("skills", configuration.getSkills());
         model.addAttribute("works", configuration.getWorks());
+        model.addAttribute("bio", configuration.getBio());
         model.addAttribute("workExperience", WorkUtil.calculateAndFormatWorkExperience(configuration.getWorks()));
 
         return "index";

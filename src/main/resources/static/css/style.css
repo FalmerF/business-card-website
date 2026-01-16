@@ -1,15 +1,16 @@
 :root {
     --background-color: rgb(28, 28, 28);
 
-    --foreground-color-1: rgb(26, 26, 26);
-    --foreground-color-2: rgb(20, 20, 20);
+    --foreground-dark-color-1: rgb(26, 26, 26);
+    --foreground-dark-color-2: rgb(20, 20, 20);
 
-    --tag-color: rgba(130, 130, 130, 0.294);
+    --foreground-light-color-1: rgba(130, 130, 130, 0.294);
 
     --primary-color: #337dbd;
 
     --text-color-1: rgb(255, 255, 255);
     --text-color-2: rgb(210, 210, 210);
+    --text-color-3: rgb(170, 170, 170);
 
     --border-radius-small: 4px;
     --border-radius-normal: 6px;
@@ -48,87 +49,4 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-.page {
-    display: flex;
-    flex-direction: column;
-    margin: var(--space-3) auto;
-    max-width: 750px;
-    width: -webkit-fill-available;
-    gap: var(--space-2);
-}
-
-.page:last-child {
-    margin-bottom: 75px;
-}
-
-.main-info {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    text-align: left;
-    flex-wrap: wrap;
-}
-
-.avatar {
-    width: 160px;
-    height: 160px;
-    border: var(--border-normal);
-    border-radius: 16px;
-}
-
-.main-info h1 {
-    margin-top: 0;
-    margin-bottom: var(--space-1);
-    line-height: 1;
-}
-
-.main-info p {
-    margin: var(--space-1) 0;
-}
-
-.contact-line {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: var(--space-1);
-    gap: 10px;
-}
-
-.contact-line a {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.contact-line span.separator {
-    color: #888;
-}
-
-.contact-line img {
-    width: 16px;
-    height: 16px;
-}
-
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background-color: var(--tag-color);
-    padding: 0 5px;
-    border-radius: var(--border-radius-small);
-    font-size: 14px;
-    font-family: var(--fonts-monospace);
-}
-
-.tag img {
-    width: 20px;
-    height: 20px;
 }

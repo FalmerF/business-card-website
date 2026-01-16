@@ -44,7 +44,7 @@
 <body>
 
 <article class="post">
-    <div class="post-content" th:utext="${post.htmlContent}"></div>
+    <div class="md-content" th:utext="${post.htmlContent}"></div>
     <div class="post-footer" style="justify-content: space-between">
         <a class="btn" href="/blog">← Назад к блогу</a>
         <div class="post-meta">
@@ -53,7 +53,7 @@
                 <span th:text="${post.views}"></span>
             </div>
             <div class="post-meta-value">
-                <img src="/icons/time.svg" alt="time">
+                <img src="/icons/date.svg" alt="time">
                 <span th:text="${post.date}"></span>
             </div>
         </div>

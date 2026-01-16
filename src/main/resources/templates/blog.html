@@ -34,7 +34,7 @@
     <h1 id="blog-title">Блог</h1>
 
     <div class="post" th:each="post : ${posts}">
-        <div class="post-content" th:utext="${post.previewHtmlContent}"></div>
+        <div class="md-content" th:utext="${post.previewHtmlContent}"></div>
         <div class="post-footer">
             <a class="btn" th:href="@{/post/{slug}(slug=${post.key})}">Читать далее →</a>
             <div class="post-meta">
@@ -43,7 +43,7 @@
                     <span th:text="${post.views}"></span>
                 </div>
                 <div class="post-meta-value">
-                    <img src="/icons/time.svg" alt="time">
+                    <img src="/icons/date.svg" alt="time">
                     <span th:text="${post.date}"></span>
                 </div>
             </div>

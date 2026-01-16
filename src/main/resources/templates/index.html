@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,25 +19,23 @@
     <link rel="shortcut icon" type="image/png" th:href="@{/icons/logo.png}" />
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/career.css}">
+    <link rel="stylesheet" th:href="@{/css/markdown.css}">
 </head>
 <body>
 
 <div class="page card">
     <div class="main-info">
-        <img class="avatar" th:src="@{/icons/photo.jpg}" alt="Avatar">
+        <img class="avatar" th:src="@{/icons/photo.jpg}" src="" alt="Avatar">
         <div style="min-width: 150px; max-width: 550px;">
             <h1 th:text="${generalInfo.fullName}"></h1>
             <p th:text="${generalInfo.status}"></p>
 
             <div class="contact-line">
-                <th:block th:each="link, status : ${links}">
-                    <a th:href="${link.url}" th:aria-label="${link.name}" target="_blank">
-                        <img th:src="${link.icon}" th:alt="${link.name}" alt="" src="" th:text="${link.name}">
-                    </a>
-                    <span th:if="${!status.last}" class="separator">/</span>
-                </th:block>
-
+                <a th:each="link, status : ${links}" th:href="${link.url}" th:aria-label="${link.name}" target="_blank">
+                    <img th:src="${link.icon}" th:alt="${link.name}" alt="" src="" th:text="${link.name}">
+                </a>
             </div>
         </div>
     </div>
@@ -50,7 +48,14 @@
 </div>
 
 <div class="page">
-    <h2 class="career-title" th:text="'Опыт работы: ' + ${workExperience}"></h2>
+    <h2 class="page-title">Биография</h2>
+    <div class="bio md-content">
+        <p th:each="paragraph : ${bio}" th:text="${paragraph}"></p>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="page-title" th:text="'Опыт работы: ' + ${workExperience}"></h2>
 
     <div class="work" th:each="work : ${works}">
         <div class="work-header">
