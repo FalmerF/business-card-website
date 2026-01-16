@@ -17,6 +17,9 @@ career:
     - name: GitHub
       url: https://github.com/FalmerF
       icon: /icons/github.svg
+    - name: Сетка
+      url: https://setka.ru/users/019aad46-8628-7fe1-9626-6b532d3a9e23
+      icon: /icons/setka.png
     - name: Habr
       url: https://habr.com/ru/users/FalmerF/
       icon: /icons/habr.svg
