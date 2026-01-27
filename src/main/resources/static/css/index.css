@@ -59,15 +59,12 @@
     text-decoration: none;
     font-weight: normal;
     color: var(--text-color-1);
+    background-color: var(--foreground-light-color-1);
     transition: all .15s ease-in-out;
 }
 
 .contact-line a:hover {
-    background-color: var(--foreground-light-color-1);
-}
-
-.contact-line span.separator {
-    color: #888;
+    background-color: var(--foreground-light-color-2);
 }
 
 .contact-line img {
