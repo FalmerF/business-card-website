@@ -16,84 +16,101 @@
     <meta name="keywords" th:content="${generalInfo.fullName} + ', ' + ${generalInfo.jobTitle}">
 
     <title th:text="${generalInfo.fullName}"></title>
-    <link rel="shortcut icon" type="image/png" th:href="@{/icons/logo.png}" />
+    <link rel="shortcut icon" type="image/png" th:href="@{/icons/logo.png}"/>
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="stylesheet" th:href="@{/css/career.css}">
     <link rel="stylesheet" th:href="@{/css/markdown.css}">
 </head>
 <body>
+<div id="content" class="vertical-flex gap-4">
+    <div class="content-block vertical-flex gap-2">
+        <div class="horizontal-flex gap-2 wrapped">
+            <img class="avatar border-high" th:src="@{/icons/photo.jpg}" src="" alt="Avatar">
+            <div class="vertical-flex justify-space-between gap-2" id="general-info">
+                <h1 class="margin-0" th:text="${generalInfo.fullName}"></h1>
+                <p class="margin-0" th:text="${generalInfo.status}"></p>
 
-<div class="page card">
-    <div class="main-info">
-        <img class="avatar" th:src="@{/icons/photo.jpg}" src="" alt="Avatar">
-        <div style="min-width: 150px; max-width: 550px;">
-            <h1 th:text="${generalInfo.fullName}"></h1>
-            <p th:text="${generalInfo.status}"></p>
+                <div class="horizontal-flex gap-1 wrapped">
+                    <a class="button-with-icon" th:each="link, status : ${links}" th:href="${link.url}"
+                       th:aria-label="${link.name}"
+                       target="_blank">
+                        <img th:src="${link.icon}" th:alt="${link.name}" alt="" src="" th:text="${link.name}">
+                    </a>
+                </div>
+            </div>
+        </div>
 
-            <div class="contact-line">
-                <a th:each="link, status : ${links}" th:href="${link.url}" th:aria-label="${link.name}" target="_blank">
-                    <img th:src="${link.icon}" th:alt="${link.name}" alt="" src="" th:text="${link.name}">
-                </a>
+        <div class="horizontal-flex gap-1 wrapped">
+            <div class="tag" th:each="skill : ${skills}">
+                <span th:text="${skill.name}"></span>
             </div>
         </div>
     </div>
 
-    <div class="skills">
-        <div class="tag" th:each="skill : ${skills}">
-            <span th:text="${skill.name}"></span>
+    <div class="content-block vertical-flex gap-1">
+        <h2 class="margin-0">Биография</h2>
+        <div class="border-normal padding-2 md-content">
+            <p th:each="paragraph : ${bio}" th:text="${paragraph}"></p>
         </div>
     </div>
-</div>
 
-<div class="page">
-    <h2 class="page-title">Биография</h2>
-    <div class="bio md-content">
-        <p th:each="paragraph : ${bio}" th:text="${paragraph}"></p>
-    </div>
-</div>
+    <div class="content-block vertical-flex gap-1">
+        <h2 class="margin-0" th:text="'Опыт работы: ' + ${workExperience}"></h2>
 
-<div class="page">
-    <h2 class="page-title" th:text="'Опыт работы: ' + ${workExperience}"></h2>
-
-    <div class="work" th:each="work : ${works}">
-        <div class="work-header">
-            <img th:src="'/icons/work/' + ${work.icon}" th:if="${work.icon != null}" src="" alt="">
-            <h2 th:text="${work.name}"></h2>
-        </div>
-        <div class="work-info">
-            <div class="work-value" th:if="${work.legalName != null}">
-                <span>Наименование:</span>
-                <span th:text="${work.legalName}"></span>
-            </div>
-            <div class="work-value" th:if="${work.position != null}">
-                <span>Позиция:</span>
-                <span th:text="${work.position}"></span>
-            </div>
-            <div class="work-value">
-                <span>Время работы:</span>
-                <span th:text="${work.period.displayText} + ' (' + ${work.getFormatedPeriod()} + ')'"></span>
-            </div>
-        </div>
-        <div class="work-tasks" th:if="${not #lists.isEmpty(work.tasks)}">
-            <h3>Задачи</h3>
-            <p th:each="task : ${work.tasks}" th:text="${task}"></p>
-        </div>
-        <div class="work-tasks" th:if="${not #lists.isEmpty(work.progress)}">
-            <h3>Достижения</h3>
-            <p th:each="progress : ${work.progress}" th:text="${progress}"></p>
-        </div>
-        <div class="work-stack">
-            <h3>Стек</h3>
-            <div class="tag-holder">
-                <div class="tag" th:each="skill : ${work.stack}">
-                    <span th:text="${skill}"></span>
+        <div class="vertical-flex gap-2">
+            <div class="content-block border-normal padding-2 vertical-flex gap-2" th:each="work : ${works}">
+                <div class="horizontal-flex gap-1 align-items-center">
+                    <img class="icon-3" th:src="'/icons/work/' + ${work.icon}" th:if="${work.icon != null}" src=""
+                         alt="">
+                    <h2 class="margin-0" th:text="${work.name}"></h2>
+                </div>
+                <div class="vertical-flex gap-1 padding-top-1 border-top-normal">
+                    <div class="horizontal-flex gap-1 justify-space-between" th:if="${work.legalName != null}">
+                        <span>Наименование:</span>
+                        <span th:text="${work.legalName}"></span>
+                    </div>
+                    <div class="horizontal-flex gap-1 justify-space-between" th:if="${work.position != null}">
+                        <span>Позиция:</span>
+                        <span th:text="${work.position}"></span>
+                    </div>
+                    <div class="horizontal-flex gap-1 justify-space-between">
+                        <span>Время работы:</span>
+                        <span th:text="${work.period.displayText} + ' (' + ${work.getFormatedPeriod()} + ')'"></span>
+                    </div>
+                </div>
+                <div class="vertical-flex gap-1 padding-top-2 border-top-normal"
+                     th:if="${not #lists.isEmpty(work.tasks)}">
+                    <h3 class="margin-0">Задачи</h3>
+                    <div class="width-fill-available md-content">
+                        <p th:each="task : ${work.tasks}" th:text="${task}"></p>
+                    </div>
+                </div>
+                <div class="vertical-flex gap-1 padding-top-2 border-top-normal"
+                     th:if="${not #lists.isEmpty(work.progress)}">
+                    <h3 class="margin-0">Достижения</h3>
+                    <div class="width-fill-available md-content">
+                        <p th:each="progress : ${work.progress}" th:text="${progress}"></p>
+                    </div>
+                </div>
+                <div class="vertical-flex gap-1 padding-top-2 border-top-normal">
+                    <h3 class="margin-0">Стек</h3>
+                    <div class="horizontal-flex gap-1 wrapped">
+                        <div class="tag" th:each="skill : ${work.stack}">
+                            <span th:text="${skill}"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+<!--    <div class="content-block vertical-flex gap-1">-->
+<!--        <h2 class="margin-0">Проекты</h2>-->
+<!--        <div class="vertical-flex gap-2">-->
+<!--            <div class="border-normal padding-2 width-fill-available md-content" th:each="project : ${projects}" th:utext="${project}"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
 </body>
 </html>

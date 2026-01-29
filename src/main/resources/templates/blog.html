@@ -30,26 +30,28 @@
     <link rel="stylesheet" th:href="@{/css/toolbar.css}">
 </head>
 <body>
-<section id="blog">
-    <h1 id="blog-title">Блог</h1>
+<div id="content" class="vertical-flex gap-1">
+    <h1 class="margin-0">Блог</h1>
 
-    <div class="post" th:each="post : ${posts}">
-        <div class="md-content" th:utext="${post.previewHtmlContent}"></div>
-        <div class="post-footer">
-            <a class="btn" th:href="@{/post/{slug}(slug=${post.key})}">Читать далее →</a>
-            <div class="post-meta">
-                <div class="post-meta-value">
-                    <img src="/icons/views.svg" alt="views">
-                    <span th:text="${post.views}"></span>
-                </div>
-                <div class="post-meta-value">
-                    <img src="/icons/date.svg" alt="time">
-                    <span th:text="${post.date}"></span>
+    <div class="vertical-flex gap-2">
+        <div class="border-normal padding-2 vertical-flex gap-3" th:each="post : ${posts}">
+            <div class="width-fill-available md-content" th:utext="${post.previewHtmlContent}"></div>
+            <div class="horizontal-flex gap-2 justify-space-between align-items-flex-end">
+                <a class="button" th:href="@{/post/{slug}(slug=${post.key})}">Читать далее →</a>
+                <div class="horizontal-flex gap-1 wrapped text-small">
+                    <div class="horizontal-flex gap-03 align-items-center">
+                        <img class="img-20" th:src="@{/icons/views.svg}" src="" alt="views">
+                        <span th:text="${post.views}"></span>
+                    </div>
+                    <div class="horizontal-flex gap-03 align-items-center">
+                        <img class="img-20" th:src="@{/icons/date.svg}" src="" alt="time">
+                        <span th:text="${post.date}"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 </body>
 </html>

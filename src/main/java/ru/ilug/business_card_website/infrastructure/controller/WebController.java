@@ -21,6 +21,9 @@ import ru.ilug.business_card_website.infrastructure.dto.BlogPostDto;
 import ru.ilug.business_card_website.infrastructure.dto.DtoMapper;
 import ru.ilug.business_card_website.util.WorkUtil;
 
+import java.util.List;
+import java.util.Objects;
+
 @Controller
 @EnableCaching
 @RequiredArgsConstructor
@@ -37,9 +40,17 @@ public class WebController {
         model.addAttribute("generalInfo", configuration.getGeneralInfo());
         model.addAttribute("links", configuration.getLinks());
         model.addAttribute("skills", configuration.getSkills());
-        model.addAttribute("works", configuration.getWorks());
         model.addAttribute("bio", configuration.getBio());
+        model.addAttribute("works", configuration.getWorks());
         model.addAttribute("workExperience", WorkUtil.calculateAndFormatWorkExperience(configuration.getWorks()));
+
+        List<String> projectsHtml = configuration.getProjects().stream()
+                .map(postsService::findPost)
+                .filter(Objects::nonNull)
+                .map(BlogPost::previewHtmlContent)
+                .toList();
+
+        model.addAttribute("projects", projectsHtml);
 
         return "index";
     }

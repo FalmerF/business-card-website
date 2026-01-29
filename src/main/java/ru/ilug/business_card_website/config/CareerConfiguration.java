@@ -20,7 +20,8 @@ public class CareerConfiguration {
     private GeneralInfoDto generalInfo;
     private List<LinkDto> links;
     private List<SkillDto> skills;
-    private List<WorkDto> works;
     private List<String> bio;
+    private List<WorkDto> works;
+    private List<String> projects;
 
 }

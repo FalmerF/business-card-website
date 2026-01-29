@@ -97,3 +97,6 @@ career:
         - "• Изучил Spring Framework: Spring Boot, Spring Web, Spring Data."
         - "• Выполнял фриланс-заказы по разработке backend-функционала на Java."
       stack: Java Core, ООП, Collections, Stream API, Spring Boot, Spring Web, Spring Data, OpenGL, MySQL, SQLite, Gradle, Git
+  projects:
+    - multiply-devices-work
+    - markdown-test

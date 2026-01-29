@@ -1,56 +1,28 @@
-.page {
-    display: flex;
-    flex-direction: column;
-    margin: var(--space-3) auto;
-    max-width: 750px;
-    width: -webkit-fill-available;
-    gap: var(--space-1);
+:root {
+    --block-max-width: 750px;
 }
 
-.page:last-child {
-    margin-bottom: 75px;
-}
-
-.page-title {
+#content {
     text-align: left;
-    margin-block-start: 0;
-    margin-block-end: 0;
+    max-width: var(--block-max-width);
+    margin: var(--space-2) auto;
 }
 
-.main-info {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    text-align: left;
-    flex-wrap: wrap;
+#general-info {
+    flex: 1 1;
+    min-width: 300px;
 }
 
-.main-info h1 {
-    margin-top: 0;
-    margin-bottom: var(--space-1);
+#general-info h1 {
     line-height: 1;
-}
-
-.main-info p {
-    margin: var(--space-1) 0;
 }
 
 .avatar {
     width: 160px;
     height: 160px;
-    border: var(--border-normal);
-    border-radius: 16px;
 }
 
-.contact-line {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: var(--space-1);
-    gap: 10px;
-}
-
-.contact-line a {
+.button-with-icon {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -63,40 +35,23 @@
     transition: all .15s ease-in-out;
 }
 
-.contact-line a:hover {
+.button-with-icon:hover {
     background-color: var(--foreground-light-color-2);
+    text-decoration: none;
 }
 
-.contact-line img {
+.button-with-icon img {
     width: 16px;
     height: 16px;
-}
-
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
 }
 
 .tag {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background-color: var(--foreground-light-color-1);
     padding: 0 5px;
+    background-color: var(--foreground-light-color-1);
     border-radius: var(--border-radius-small);
     font-size: 14px;
     font-family: var(--fonts-monospace);
-}
-
-.tag img {
-    width: 20px;
-    height: 20px;
-}
-
-.bio {
-    text-align: left;
-    padding: 4px 20px;
-    border: var(--border-normal);
-    border-radius: var(--border-radius-normal);
 }

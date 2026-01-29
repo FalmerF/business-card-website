@@ -15,6 +15,7 @@
 
     --border-radius-small: 4px;
     --border-radius-normal: 6px;
+    --border-radius-high: 16px;
 
     --border-normal: 1px solid rgb(68, 68, 68);
 
@@ -36,6 +37,7 @@ body {
     line-height: 1.7;
     background: var(--background-color);
     color: var(--text-color-2);
+    margin: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,4 +52,75 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.content-block {
+    max-width: var(--block-max-width);
+}
+
+.border-normal {
+    border: var(--border-normal);
+    border-radius: var(--border-radius-normal);
+}
+
+.border-high {
+    border: var(--border-normal);
+    border-radius: var(--border-radius-high);
+}
+
+.border-top-normal {
+    border-top: var(--border-normal);
+}
+
+.vertical-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontal-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.wrapped {
+    flex-wrap: wrap;
+}
+
+.align-items-center { align-items: center; }
+
+.align-items-flex-end { align-items: flex-end; }
+
+.gap-1 { gap: 10px; }
+.gap-2 { gap: var(--space-1); }
+.gap-3 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-3); }
+
+.padding-1 { padding: var(10px); }
+.padding-2 { padding: var(--space-1); }
+.padding-3 { padding: var(--space-2); }
+.padding-4 { padding: var(--space-3); }
+
+.padding-top-1 { padding-top: 10px; }
+.padding-top-2 { padding-top: var(--space-1); }
+.padding-top-3 { padding-top: var(--space-2); }
+.padding-top-4 { padding-top: var(--space-3); }
+
+.margin-0 { margin: 0; }
+
+.icon-3 {
+    width: 30px;
+    height: 30px;
+}
+
+.width-fill-available {
+    width: -webkit-fill-available;
+}
+
+.text-small {
+    color: var(--text-color-3);
+    font-size: 0.8125rem;
 }

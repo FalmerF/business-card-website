@@ -16,7 +16,7 @@
     <meta name="keywords" th:content="${#strings.listJoin(post.keyWords, ', ')}">
 
     <title th:text="${post.title}"></title>
-    <link rel="icon" type="image/png" th:href="@{/icons/logo.png}" />
+    <link rel="icon" type="image/png" th:href="@{/icons/logo.png}"/>
 
     <!-- Prism core -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css">
@@ -42,23 +42,23 @@
     <link rel="stylesheet" th:href="@{/css/toolbar.css}">
 </head>
 <body>
-
-<article class="post">
-    <div class="md-content" th:utext="${post.htmlContent}"></div>
-    <div class="post-footer" style="justify-content: space-between">
-        <a class="btn" href="/blog">← Назад к блогу</a>
-        <div class="post-meta">
-            <div class="post-meta-value">
-                <img src="/icons/views.svg" alt="views">
-                <span th:text="${post.views}"></span>
-            </div>
-            <div class="post-meta-value">
-                <img src="/icons/date.svg" alt="time">
-                <span th:text="${post.date}"></span>
+<div id="content">
+    <div class="border-normal padding-2 vertical-flex gap-3">
+        <div class="width-fill-available md-content" th:utext="${post.htmlContent}"></div>
+        <div class="horizontal-flex gap-2 justify-space-between align-items-flex-end">
+            <a class="button" th:href="@{/blog}">← Назад к блогу</a>
+            <div class="horizontal-flex gap-1 wrapped text-small">
+                <div class="horizontal-flex gap-03 align-items-center">
+                    <img class="img-20" th:src="@{/icons/views.svg}" src="" alt="views">
+                    <span th:text="${post.views}"></span>
+                </div>
+                <div class="horizontal-flex gap-03 align-items-center">
+                    <img class="img-20" th:src="@{/icons/date.svg}" src="" alt="time">
+                    <span th:text="${post.date}"></span>
+                </div>
             </div>
         </div>
     </div>
-</article>
-
+</div>
 </body>
 </html>
