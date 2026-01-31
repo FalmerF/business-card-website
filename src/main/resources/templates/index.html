@@ -68,15 +68,15 @@
                 <div class="vertical-flex gap-1 padding-top-1 border-top-normal">
                     <div class="horizontal-flex gap-1 justify-space-between" th:if="${work.legalName != null}">
                         <span>Наименование:</span>
-                        <span th:text="${work.legalName}"></span>
+                        <span class="text-align-right" th:text="${work.legalName}"></span>
                     </div>
                     <div class="horizontal-flex gap-1 justify-space-between" th:if="${work.position != null}">
                         <span>Позиция:</span>
-                        <span th:text="${work.position}"></span>
+                        <span class="text-align-right" th:text="${work.position}"></span>
                     </div>
                     <div class="horizontal-flex gap-1 justify-space-between">
                         <span>Время работы:</span>
-                        <span th:text="${work.period.displayText} + ' (' + ${work.getFormatedPeriod()} + ')'"></span>
+                        <span class="text-align-right" th:text="${work.period.displayText} + ' (' + ${work.getFormatedPeriod()} + ')'"></span>
                     </div>
                 </div>
                 <div class="vertical-flex gap-1 padding-top-2 border-top-normal"
