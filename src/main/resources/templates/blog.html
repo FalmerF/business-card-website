@@ -34,7 +34,7 @@
     <h1 class="margin-0">Блог</h1>
 
     <div class="vertical-flex gap-2">
-        <div class="border-normal padding-2 vertical-flex gap-3" th:each="post : ${posts}">
+        <div class="border-normal foreground-1 padding-2 vertical-flex gap-3" th:each="post : ${posts}">
             <div class="width-fill-available md-content" th:utext="${post.previewHtmlContent}"></div>
             <div class="horizontal-flex gap-2 justify-space-between align-items-flex-end">
                 <a class="button" th:href="@{/post/{slug}(slug=${post.key})}">Читать далее →</a>

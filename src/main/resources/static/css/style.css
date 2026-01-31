@@ -1,11 +1,15 @@
 :root {
     --background-color: rgb(28, 28, 28);
 
+    --foreground-color-1: rgb(32, 32, 32);
+    --foreground-color-2: rgb(36, 36, 36);
+
     --foreground-dark-color-1: rgb(26, 26, 26);
     --foreground-dark-color-2: rgb(20, 20, 20);
 
-    --foreground-light-color-1: rgba(130, 130, 130, 0.294);
-    --foreground-light-color-2: rgba(130, 130, 130, 0.594);
+    --foreground-light-color-50: rgb(50, 50, 50);
+    --foreground-light-color-60: rgb(60, 60, 60);
+    --foreground-light-color-70: rgb(70, 70, 70);
 
     --primary-color: #337dbd;
 
@@ -13,15 +17,21 @@
     --text-color-2: rgb(210, 210, 210);
     --text-color-3: rgb(170, 170, 170);
 
-    --border-radius-small: 4px;
-    --border-radius-normal: 6px;
-    --border-radius-high: 16px;
+    --border-radius-small: 8px;
+    --border-radius-normal: 12px;
+    --border-radius-high: 24px;
 
     --border-normal: 1px solid rgb(68, 68, 68);
 
-    --space-1: 20px;
-    --space-2: 30px;
-    --space-3: 40px;
+    --size-1: 10px;
+    --size-2: 20px;
+    --size-3: 30px;
+    --size-4: 40px;
+
+    --space-1: var(--size-1);
+    --space-2: var(--size-2);
+    --space-3: var(--size-3);
+    --space-4: var(--size-4);
 
     --fonts-proportional: -apple-system, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial;
     --fonts-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -33,7 +43,6 @@
 body {
     font-family: var(--fonts-proportional);
     font-size: 1rem;
-    text-align: center;
     line-height: 1.7;
     background: var(--background-color);
     color: var(--text-color-2);
@@ -94,20 +103,20 @@ a:hover {
 
 .align-items-flex-end { align-items: flex-end; }
 
-.gap-1 { gap: 10px; }
-.gap-2 { gap: var(--space-1); }
-.gap-3 { gap: var(--space-2); }
-.gap-4 { gap: var(--space-3); }
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
 
-.padding-1 { padding: var(10px); }
-.padding-2 { padding: var(--space-1); }
-.padding-3 { padding: var(--space-2); }
-.padding-4 { padding: var(--space-3); }
+.padding-1 { padding: var(--size-1); }
+.padding-2 { padding: var(--size-2); }
+.padding-3 { padding: var(--size-3); }
+.padding-4 { padding: var(--size-4); }
 
-.padding-top-1 { padding-top: 10px; }
-.padding-top-2 { padding-top: var(--space-1); }
-.padding-top-3 { padding-top: var(--space-2); }
-.padding-top-4 { padding-top: var(--space-3); }
+.padding-top-1 { padding-top: var(--size-1); }
+.padding-top-2 { padding-top: var(--size-2); }
+.padding-top-3 { padding-top: var(--size-3); }
+.padding-top-4 { padding-top: var(--size-4); }
 
 .margin-0 { margin: 0; }
 
@@ -123,4 +132,12 @@ a:hover {
 .text-small {
     color: var(--text-color-3);
     font-size: 0.8125rem;
+}
+
+.foreground-1 {
+    background-color: var(--foreground-color-1);
+}
+
+.foreground-2 {
+    background-color: var(--foreground-color-1);
 }

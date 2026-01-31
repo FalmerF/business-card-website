@@ -50,7 +50,7 @@
 
     <div class="content-block vertical-flex gap-1">
         <h2 class="margin-0">Биография</h2>
-        <div class="border-normal padding-2 md-content">
+        <div class="border-normal foreground-1 padding-2 md-content">
             <p th:each="paragraph : ${bio}" th:text="${paragraph}"></p>
         </div>
     </div>
@@ -59,7 +59,7 @@
         <h2 class="margin-0" th:text="'Опыт работы: ' + ${workExperience}"></h2>
 
         <div class="vertical-flex gap-2">
-            <div class="content-block border-normal padding-2 vertical-flex gap-2" th:each="work : ${works}">
+            <div class="content-block border-normal foreground-1 padding-2 vertical-flex gap-2" th:each="work : ${works}">
                 <div class="horizontal-flex gap-1 align-items-center">
                     <img class="icon-3" th:src="'/icons/work/' + ${work.icon}" th:if="${work.icon != null}" src=""
                          alt="">
