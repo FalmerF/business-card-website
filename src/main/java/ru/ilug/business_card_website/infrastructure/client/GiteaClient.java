@@ -12,7 +12,7 @@ import ru.ilug.business_card_website.infrastructure.dto.MetadataDto;
 import java.util.List;
 
 @Component
-public class GiteaClient {
+public class GiteaClient implements GitClient {
 
     private final String owner;
     private final String repository;
@@ -21,27 +21,30 @@ public class GiteaClient {
 
     private final JsonMapper jsonMapper = new JsonMapper();
 
-    public GiteaClient(@Value("${gitea.owner}") String owner, @Value("${gitea.password}") String password,
-                       @Value("${gitea.repository}") String repository, @Value("${gitea.branch}") String branch) {
+    public GiteaClient(@Value("${git.base-url}") String baseUrl, @Value("${git.owner}") String owner,
+                       @Value("${git.password}") String password, @Value("${git.repository}") String repository,
+                       @Value("${git.branch}") String branch) {
         this.owner = owner;
         this.repository = repository;
         this.branch = branch;
 
         webClient = WebClient.builder()
-                .baseUrl("https://git.ilug.ru/api/v1")
+                .baseUrl(baseUrl)
                 .defaultHeaders(headers -> headers.setBasicAuth(owner, password))
                 .build();
     }
 
+    @Override
     public List<GiteaFileDto> fetchDirectoryFiles(String path) {
         return webClient.get()
-                .uri(String.format("/repos/%s/%s/contents%s?ref=%s", owner, repository, path, branch))
+                .uri(String.format("/api/v1/repos/%s/%s/contents%s?ref=%s", owner, repository, path, branch))
                 .retrieve()
                 .bodyToFlux(GiteaFileDto.class)
                 .collectList()
                 .block();
     }
 
+    @Override
     public String fetchFileContent(String downloadUrl) {
         return webClient.get()
                 .uri(downloadUrl)
@@ -51,12 +54,14 @@ public class GiteaClient {
                 .block();
     }
 
+    @Override
     public MetadataDto fetchMetadataContent(String downloadUrl) throws JsonProcessingException {
         String content = fetchFileContent(downloadUrl);
         return jsonMapper.readValue(content, MetadataDto.class);
     }
 
-    public String getContentBaseUrl(String post) {
-        return String.format("https://git.ilug.ru/%s/%s/raw/branch/%s/%s/", owner, repository, branch, post);
+    @Override
+    public String getBaseUrlForBlogPost(String blogPostId) {
+        return String.format("https://git.ilug.ru/%s/%s/raw/branch/%s/%s/", owner, repository, branch, blogPostId);
     }
 }

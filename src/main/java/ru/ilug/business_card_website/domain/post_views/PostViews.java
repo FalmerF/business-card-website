@@ -1,4 +1,4 @@
-package ru.ilug.business_card_website.data.model;
+package ru.ilug.business_card_website.domain.post_views;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

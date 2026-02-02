@@ -25,7 +25,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public TokenAuthenticationFilter tokenAuthenticationFilter(@Value("${gitea.webhook.token}") String token) {
+    public TokenAuthenticationFilter tokenAuthenticationFilter(@Value("${git.webhook.token}") String token) {
         return new TokenAuthenticationFilter(token);
     }
 }

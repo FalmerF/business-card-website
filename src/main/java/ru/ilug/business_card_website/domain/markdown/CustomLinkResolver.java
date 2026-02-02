@@ -1,4 +1,4 @@
-package ru.ilug.business_card_website.data.service.markdown;
+package ru.ilug.business_card_website.domain.markdown;
 
 import com.vladsch.flexmark.html.LinkResolver;
 import com.vladsch.flexmark.html.renderer.LinkResolverBasicContext;

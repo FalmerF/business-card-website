@@ -1,6 +1,6 @@
 package ru.ilug.business_card_website.infrastructure.dto;
 
-import ru.ilug.business_card_website.data.model.BlogPost;
+import ru.ilug.business_card_website.domain.blog_post.BlogPost;
 
 public class DtoMapper {
 

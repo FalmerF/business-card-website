@@ -13,10 +13,10 @@ import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import ru.ilug.business_card_website.config.CareerConfiguration;
-import ru.ilug.business_card_website.data.model.BlogPost;
-import ru.ilug.business_card_website.data.model.PostViews;
-import ru.ilug.business_card_website.data.service.PostsService;
-import ru.ilug.business_card_website.data.service.PostViewsService;
+import ru.ilug.business_card_website.domain.blog_post.BlogPost;
+import ru.ilug.business_card_website.domain.post_views.PostViews;
+import ru.ilug.business_card_website.domain.blog_post.BlogPostService;
+import ru.ilug.business_card_website.domain.post_views.PostViewsService;
 import ru.ilug.business_card_website.infrastructure.dto.BlogPostDto;
 import ru.ilug.business_card_website.infrastructure.dto.DtoMapper;
 import ru.ilug.business_card_website.util.WorkUtil;
@@ -30,7 +30,7 @@ import java.util.Objects;
 public class WebController {
 
     private final CareerConfiguration configuration;
-    private final PostsService postsService;
+    private final BlogPostService blogPostService;
     private final PostViewsService postViewsService;
 
     @GetMapping("/")
@@ -45,7 +45,7 @@ public class WebController {
         model.addAttribute("workExperience", WorkUtil.calculateAndFormatWorkExperience(configuration.getWorks()));
 
         List<String> projectsHtml = configuration.getProjects().stream()
-                .map(postsService::findPost)
+                .map(blogPostService::findPost)
                 .filter(Objects::nonNull)
                 .map(BlogPost::previewHtmlContent)
                 .toList();
@@ -58,9 +58,9 @@ public class WebController {
     @GetMapping("/blog")
     public Mono<String> blog(Model model) {
         model.addAttribute("generalInfo", configuration.getGeneralInfo());
-        return Flux.fromIterable(postsService.getAllPosts())
+        return Flux.fromIterable(blogPostService.getAllPosts())
                 .map(blogPost -> {
-                    PostViews views = postViewsService.getPostViews(blogPost.key());
+                    PostViews views = postViewsService.getPostViewsById(blogPost.key());
                     return DtoMapper.fromEntity(blogPost, views.getViews());
                 }).collectList()
                 .map(posts -> {
@@ -71,13 +71,13 @@ public class WebController {
 
     @GetMapping("/post/{key}")
     public String viewPost(@PathVariable String key, Model model) {
-        BlogPost blogPost = postsService.findPost(key);
+        BlogPost blogPost = blogPostService.findPost(key);
 
         if (blogPost == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found");
         }
 
-        int views = postViewsService.incrementPostViews(key);
+        int views = postViewsService.incrementPostViewsById(key);
         BlogPostDto blogPostDto = DtoMapper.fromEntity(blogPost, views);
 
         model.addAttribute("post", blogPostDto);
