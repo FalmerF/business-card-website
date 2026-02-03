@@ -1,4 +1,4 @@
-package ru.ilug.business_card_website.domain.markdown;
+package ru.ilug.business_card_website.domain.markdown.code_block;
 
 import com.vladsch.flexmark.html.HtmlWriter;
 import com.vladsch.flexmark.html.renderer.NodeRendererContext;

@@ -9,8 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import ru.ilug.business_card_website.domain.markdown.CodeBlockRenderInitializer;
+import ru.ilug.business_card_website.domain.markdown.code_block.CodeBlockRenderInitializer;
 import ru.ilug.business_card_website.domain.markdown.CustomLinkResolverFactory;
+import ru.ilug.business_card_website.domain.markdown.image.ImageRenderInitializer;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -60,6 +61,7 @@ public class BlogPostService {
                 .extensions(flexmarkExtensions)
                 .linkResolverFactory(new CustomLinkResolverFactory(baseUrl))
                 .nodeRendererFactory(dataHolder -> new CodeBlockRenderInitializer())
+                .nodeRendererFactory(dataHolder -> new ImageRenderInitializer())
                 .build();
 
         String content = rawBlogPost.content();

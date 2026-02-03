@@ -55,12 +55,24 @@
 }
 
 /* Images */
+.md-content figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--size-1);
+    margin: var(--size-1) 0;
+}
+
 .md-content img {
     max-width: 100%;
     height: auto;
-    margin: var(--size-1) 0;
+    margin: 0;
     border: var(--border-normal);
     border-radius: var(--border-radius-normal);
+}
+
+.md-content figcaption {
+    color: var(--text-color-3);
 }
 
 /* Tables */
