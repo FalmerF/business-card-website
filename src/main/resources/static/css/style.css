@@ -1,8 +1,8 @@
 :root {
     --background-color: rgb(28, 28, 28);
 
-    --foreground-color-1: rgb(32, 32, 32);
-    --foreground-color-2: rgb(36, 36, 36);
+    --foreground-color-1: rgb(38, 38, 38);
+    --foreground-color-2: rgb(46, 46, 46);
 
     --foreground-dark-color-1: rgb(26, 26, 26);
     --foreground-dark-color-2: rgb(20, 20, 20);
@@ -14,7 +14,7 @@
     --primary-color: #337dbd;
 
     --text-color-1: rgb(255, 255, 255);
-    --text-color-2: rgb(210, 210, 210);
+    --text-color-2: rgb(220, 220, 220);
     --text-color-3: rgb(170, 170, 170);
 
     --border-radius-small: 8px;
@@ -143,5 +143,5 @@ a:hover {
 }
 
 .foreground-2 {
-    background-color: var(--foreground-color-1);
+    background-color: var(--foreground-color-2);
 }

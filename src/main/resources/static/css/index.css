@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    background-color: var(--foreground-light-color-60);
     border: var(--border-normal);
     border-radius: var(--border-radius-small);
     padding: 2px 7px;
@@ -37,6 +38,7 @@
 
 .button-with-icon:hover {
     background-color: var(--foreground-light-color-70);
+    transform: scale(1.05);
     text-decoration: none;
 }
 
@@ -49,8 +51,9 @@
     display: inline-flex;
     align-items: center;
     gap: 2px 7px;
-    padding: 0 5px;
-    background-color: var(--foreground-light-color-50);
+    padding: 2px 7px;
+    background-color: var(--foreground-light-color-60);
+    border: var(--border-normal);
     border-radius: var(--border-radius-small);
     font-size: 14px;
     font-family: var(--fonts-monospace);
