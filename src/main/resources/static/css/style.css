@@ -11,7 +11,7 @@
     --foreground-light-color-60: rgb(60, 60, 60);
     --foreground-light-color-70: rgb(70, 70, 70);
 
-    --primary-color: #337dbd;
+    --primary-color: #1988e7;
 
     --text-color-1: rgb(255, 255, 255);
     --text-color-2: rgb(220, 220, 220);
@@ -144,4 +144,77 @@ a:hover {
 
 .foreground-2 {
     background-color: var(--foreground-color-2);
+}
+
+.tab {
+    overflow: hidden;
+}
+
+.tab-button-holder {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--foreground-color-1);
+    border: var(--border-normal);
+    border-radius: var(--border-radius-normal);
+}
+
+.tab-button {
+    position: relative;
+    padding: 4px 2px;
+    border-radius: var(--border-radius-normal);
+    border-bottom: 4px solid rgba(0, 0, 0, 0);
+    width: -webkit-fill-available;
+    font-weight: bold;
+    text-align: center;
+    color: var(--text-color-3);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.tab-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 0;
+    height: 4px;
+    background-color: var(--text-color-3);
+    border-radius: 2px;
+    transition: all .2s ease-in-out;
+}
+
+.tab-button:hover {
+    color: var(--text-color-2);
+}
+
+.tab-button:hover::after {
+    width: 70%;
+    background-color: var(--text-color-2);
+}
+
+.tab-button.selected {
+    cursor: default;
+    color: var(--primary-color);
+}
+
+.tab-button.selected::after {
+    background-color: var(--primary-color);
+    width: 80%;
+}
+
+.tab-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: var(--space-2);
+    transition: all .3s ease-in-out;
+    --tab-index: 0;
+    transform: translate(calc(min((100vw - 32px + var(--space-2)), var(--block-max-width) + var(--space-2)) * -1 * var(--tab-index)));
+}
+
+.tab-content > div {
+    width: calc(100vw - 32px);
 }

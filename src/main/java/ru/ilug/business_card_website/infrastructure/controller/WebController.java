@@ -47,7 +47,7 @@ public class WebController {
         List<String> projectsHtml = configuration.getProjects().stream()
                 .map(blogPostService::findPost)
                 .filter(Objects::nonNull)
-                .map(BlogPost::previewHtmlContent)
+                .map(BlogPost::htmlContent)
                 .toList();
 
         model.addAttribute("projects", projectsHtml);
