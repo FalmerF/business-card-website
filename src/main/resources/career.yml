@@ -27,7 +27,7 @@ career:
       url: /blog
       icon: /icons/logo.png
   skills:
-    - name: Java 8-17
+    - name: Java 8-21
     - name: Spring Framework
     - name: Hibernate
     - name: JPA
@@ -98,4 +98,6 @@ career:
         - "• Выполнял фриланс-заказы по разработке backend-функционала на Java."
       stack: Java Core, ООП, Collections, Stream API, Spring Boot, Spring Web, Spring Data, OpenGL, MySQL, SQLite, Gradle, Git
   projects:
+    - vext
+    - puml-generator
     - byte-mapper

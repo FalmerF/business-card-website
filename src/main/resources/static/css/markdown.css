@@ -241,3 +241,22 @@
 .md-content details summary:hover {
     background-color: var(--foreground-light-color-70);
 }
+
+green-badge, blue-badge {
+    padding: 2px 7px;
+    border: var(--border-normal);
+    border-radius: var(--border-radius-small);
+    font-size: 14px;
+    font-family: var(--fonts-monospace);
+    color: var(--text-color-1);
+}
+
+green-badge {
+    background-color: rgba(var(--tag-green-color), 0.1);
+    border-color: rgba(var(--tag-green-color), 0.4);
+}
+
+blue-badge {
+    background-color: rgba(var(--tag-blue-color), 0.1);
+    border-color: rgba(var(--tag-blue-color), 0.4);
+}
