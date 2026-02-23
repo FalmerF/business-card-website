@@ -219,6 +219,10 @@
     border-radius: var(--border-radius-small);
 }
 
+.md-content details[green] {
+    border-left-color: rgb(var(--tag-green-color));
+}
+
 .md-content details[open] {
     padding-bottom: var(--size-1);
 }
@@ -242,6 +246,7 @@
     background-color: var(--foreground-light-color-70);
 }
 
+/* Badges */
 green-badge, blue-badge {
     padding: 2px 7px;
     border: var(--border-normal);
