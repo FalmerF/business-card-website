@@ -31,44 +31,41 @@
     <link rel="stylesheet" th:href="@{/css/markdown.css}">
 </head>
 <body>
-<div id="content" class="vertical-flex gap-2">
-    <div class="content-block vertical-flex gap-2">
+<div id="page-content" class="horizontal-flex gap-3 justify-center">
+    <div id="info-block" class="vertical-flex gap-2">
         <div class="horizontal-flex gap-2 wrapped">
             <img class="avatar border-high" th:src="@{/icons/photo.jpg}" src="" alt="Avatar">
-            <div class="vertical-flex justify-space-between gap-2" id="general-info">
-                <h1 class="margin-0" th:text="${generalInfo.fullName}"></h1>
-                <p class="margin-0" th:text="${generalInfo.status}"></p>
+            <div class="vertical-flex gap-2" id="general-info">
+                <div class="vertical-flex gap-2">
+                    <h2 class="margin-0" th:text="${generalInfo.fullName}"></h2>
+                    <p class="margin-0" th:text="${generalInfo.status}"></p>
+                    <div class="horizontal-flex gap-1 justify-space-between">
+                        <span>Опыт работы:</span>
+                        <span class="text-align-right" th:text="${workExperience}"></span>
+                    </div>
+                </div>
 
-                <div class="horizontal-flex gap-1 wrapped">
+                <div class="horizontal-flex gap-1 wrapped padding-top-1 border-top-normal">
                     <a class="button-with-icon" th:each="link, status : ${links}" th:href="${link.url}"
                        th:aria-label="${link.name}"
                        target="_blank">
                         <img th:src="${link.icon}" th:alt="${link.name}" alt="" src="" th:text="${link.name}">
                     </a>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="content-block vertical-flex gap-2 foreground-1 border-normal padding-2 width-fill-available">
-        <div class="vertical-flex gap-1">
-            <h3 class="margin-0">Информация</h3>
-            <div class="horizontal-flex gap-1 justify-space-between">
-                <span>Опыт работы:</span>
-                <span class="text-align-right" th:text="${workExperience}"></span>
-            </div>
-        </div>
-        <div class="vertical-flex gap-1 padding-top-2 border-top-normal">
-            <h3 class="margin-0">Стек</h3>
-            <div class="horizontal-flex gap-1 wrapped">
-                <div class="tag" th:each="skill : ${skills}">
-                    <span th:text="${skill.name}"></span>
+                <div class="vertical-flex gap-1 padding-top-2 border-top-normal">
+                    <h3 class="margin-0">Стек</h3>
+                    <div class="horizontal-flex gap-1 wrapped">
+                        <div class="tag" th:each="skill : ${skills}">
+                            <span th:text="${skill.name}"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="tab vertical-flex gap-2">
+    <div id="content-block" class="content-block tab vertical-flex gap-2">
         <div class="tab-button-holder width-fill-available">
             <div class="tab-button">Карьера</div>
             <div class="tab-button">Проекты</div>

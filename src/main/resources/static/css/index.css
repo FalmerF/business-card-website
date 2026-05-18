@@ -1,25 +1,42 @@
 :root {
     --block-max-width: 750px;
+    --info-width: 280px;
 }
 
-#content {
+#page-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    container-type: inline-size;
     text-align: left;
-    max-width: var(--block-max-width);
     margin: var(--size-3) auto;
+}
+
+#info-block {
+    max-width: var(--info-width);
 }
 
 #general-info {
     flex: 1 1;
-    min-width: 300px;
 }
 
-#general-info h1 {
+#general-info h2 {
     line-height: 1;
 }
 
+@container (max-width: 1050px) {
+    #page-content > #info-block {
+        max-width: 100%;
+    }
+
+    #page-content > #content-block {
+        max-width: 100%;
+    }
+}
+
 .avatar {
-    width: 160px;
-    height: 160px;
+    width: var(--info-width);
+    height: var(--info-width);
 }
 
 .button-with-icon {

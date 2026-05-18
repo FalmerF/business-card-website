@@ -11,7 +11,7 @@
     --foreground-light-color-60: rgb(60, 60, 60);
     --foreground-light-color-70: rgb(70, 70, 70);
 
-    --primary-color: #1988e7;
+    --primary-color: 25, 136, 231;
 
     --tag-blue-color: 25, 136, 231;
     --tag-green-color: 97, 234, 99;
@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    color: var(--primary-color);
+    color: rgb(var(--primary-color));
     text-decoration: none;
     font-weight: bold;
 }
@@ -96,6 +96,10 @@ a:hover {
 
 .justify-space-between {
     justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .wrapped {
@@ -156,16 +160,14 @@ a:hover {
 .tab-button-holder {
     display: flex;
     flex-direction: row;
-    background-color: var(--foreground-color-1);
-    border: var(--border-normal);
     border-radius: var(--border-radius-normal);
 }
 
 .tab-button {
     position: relative;
     padding: 4px 2px;
-    border-radius: var(--border-radius-normal);
-    border-bottom: 4px solid rgba(0, 0, 0, 0);
+    background-color: rgba(var(--primary-color), 0);
+    border-radius: var(--border-radius-small);
     width: -webkit-fill-available;
     font-weight: bold;
     text-align: center;
@@ -182,9 +184,10 @@ a:hover {
     left: 50%;
     transform: translate(-50%, 0);
     width: 0;
-    height: 4px;
+    height: 2px;
     background-color: var(--text-color-3);
     border-radius: 2px;
+    overflow: hidden;
     transition: all .2s ease-in-out;
 }
 
@@ -193,18 +196,19 @@ a:hover {
 }
 
 .tab-button:hover::after {
-    width: 70%;
+    width: 80%;
     background-color: var(--text-color-2);
 }
 
 .tab-button.selected {
     cursor: default;
-    color: var(--primary-color);
+    color: rgb(var(--primary-color));
+    background-color: rgba(var(--primary-color), 0.15)
 }
 
 .tab-button.selected::after {
-    background-color: var(--primary-color);
-    width: 80%;
+    background-color: rgb(var(--primary-color));
+    width: 100%;
 }
 
 .tab-content {
