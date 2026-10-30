@@ -67,12 +67,12 @@
     max-width: 100%;
     height: auto;
     margin: 0;
-    border: var(--border-normal);
+    border: var(--foreground-border);
     border-radius: var(--border-radius-normal);
 }
 
 .md-content figcaption {
-    color: var(--text-color-3);
+    color: var(--foreground-text-color);
 }
 
 /* Tables */
@@ -81,7 +81,7 @@
     border-collapse: separate;
     border-spacing: 0;
     border-radius: var(--border-radius-normal);
-    border: var(--border-normal);
+    border: var(--foreground-border);
     margin: var(--size-1) 0;
     overflow: hidden;
     font-size: 0.95em;
@@ -90,9 +90,10 @@
 .md-content th,
 .md-content td {
     background-color: var(--background-color);
-    border-right: var(--border-normal);
-    border-bottom: var(--border-normal);
+    border-right: var(--foreground-border);
+    border-bottom: var(--foreground-border);
     padding: var(--size-1);
+    color: var(--text-color);
 }
 
 .md-content th:last-child,
@@ -105,14 +106,15 @@
 }
 
 .md-content th {
-    background-color: var(--foreground-dark-color-1);
+    background-color: var(--background-highlighted-color);
     text-align: left;
+    color: var(--title-color);
 }
 
 /* Separators */
 .md-content hr {
     border: none;
-    border-top: var(--border-normal);
+    border-top: 2px solid var(--highlighted-border-color-normal);
     margin: var(--size-2) 0;
 }
 
@@ -125,15 +127,15 @@
 .md-content .code-header {
     display: flex;
     justify-content: space-between;
-    background-color: var(--background-color);
-    border: var(--border-normal);
+    background-color: var(--background-highlighted-color);
+    border: var(--foreground-border);
     border-bottom: none;
     border-top-left-radius: var(--border-radius-normal);
     border-top-right-radius: var(--border-radius-normal);
     padding: var(--size-1);
     font-family: var(--fonts-monospace);
     line-height: 1;
-    color: var(--text-color-3);
+    color: var(--title-color);
 }
 
 .md-content .code-header div {
@@ -155,13 +157,13 @@
 }
 
 .md-content .code-header .image-button:hover {
-    background-color: var(--foreground-light-color-70);
+    background-color: var(--highlighted-color-hovered);
 }
 
 .md-content pre {
     overflow-x: auto;
     border-radius: var(--border-radius-normal);
-    border: var(--border-normal);
+    border: var(--foreground-border);
     margin: 0;
     background-color: var(--background-color);
 }
@@ -182,9 +184,9 @@
 /* Code highlight */
 .md-content code {
     background-color: var(--background-color);
-    color: #f8f8f2;
-    padding: 5px 7px;
-    border: var(--border-normal);
+    color: var(--title-color);
+    padding: 6px 8px;
+    border: var(--foreground-border);
     border-radius: var(--border-radius-small);
     font-family: var(--fonts-monospace);
     font-size: 0.95em;
@@ -195,10 +197,9 @@
     margin: var(--size-1) 0;
     padding: var(--size-1);
     padding-left: var(--size-2);
-    border: var(--border-normal);
-    border-left: 4px solid rgb(var(--primary-color));
+    border: var(--foreground-border);
+    border-left: 3px solid var(--primary-color);
     background-color: var(--background-color);
-    color: var(--text-color-2);
     font-style: italic;
     border-radius: var(--border-radius-small);
 }
@@ -213,14 +214,10 @@
     padding-left: var(--size-2);
     padding-bottom: 0;
     margin: var(--size-1) 0;
-    border: var(--border-normal);
-    border-left: 4px solid rgb(var(--primary-color));
+    border: var(--foreground-border);
+    border-left: 3px solid var(--primary-color);
     background-color: var(--background-color);
     border-radius: var(--border-radius-small);
-}
-
-.md-content details[green] {
-    border-left-color: rgb(var(--tag-green-color));
 }
 
 .md-content details[open] {
@@ -235,33 +232,32 @@
     line-height: 1;
     cursor: pointer;
     transition: background-color .15s ease-in-out;
+    color: var(--title-color);
 }
 
 .md-content details[open] summary {
-    border-bottom: var(--border-normal);
+    border-bottom: var(--foreground-border);
     margin-bottom: var(--size-1);
 }
 
 .md-content details summary:hover {
-    background-color: var(--foreground-light-color-70);
+    background-color: var(--highlighted-color-hovered);
 }
 
 /* Badges */
 green-badge, blue-badge {
-    padding: 2px 7px;
-    border: var(--border-normal);
+    padding: 3px 8px;
+    border: var(--foreground-border);
     border-radius: var(--border-radius-small);
     font-size: 14px;
     font-family: var(--fonts-monospace);
-    color: var(--text-color-1);
+    color: var(--title-color);
 }
 
 green-badge {
-    background-color: rgba(var(--tag-green-color), 0.1);
-    border-color: rgba(var(--tag-green-color), 0.4);
+    background-color: var(--tag-green-color);
 }
 
 blue-badge {
-    background-color: rgba(var(--tag-blue-color), 0.1);
-    border-color: rgba(var(--tag-blue-color), 0.4);
+    background-color: var(--tag-blue-color);
 }

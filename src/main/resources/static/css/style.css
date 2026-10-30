@@ -1,30 +1,34 @@
 :root {
-    --background-color: rgb(28, 28, 28);
+    --background-color: hsl(0, 0%, 9.05%);
+    --foreground-color: hsla(0, 0%, 14.94%, 1);
+    --highlighted-color-normal: hsla(0, 0%, 32.2%, 0.45);
+    --highlighted-color-hovered: hsla(0, 0%, 32.2%, 0.80);
+    --background-highlighted-color: hsl(0, 0%, 6.5%);
+    
+    --text-color: hsl(0, 0%, 83.14%);
+    --title-color: hsl(0, 0%, 89.82%);
+    
+    --foreground-text-color: hsl(0, 0%, 83.14%);
+    --foreground-title-color: hsl(0, 0%, 89.82%);
+    
+    --highlighted-text-color: hsl(0, 0%, 89.82%);
+    --highlighted-title-color: hsl(0, 0%, 96.06%);
+    
+    --border-color: hsl(0, 0%, 25.05%);
+    --foreground-border-color: hsl(0, 0%, 25.05%);
+    --highlighted-border-color-normal: hsla(0, 0%, 45.15%, 0.35);
+    --highlighted-border-color-hovered: hsla(0, 0%, 45.15%, 0.75);
 
-    --foreground-color-1: rgb(38, 38, 38);
-    --foreground-color-2: rgb(46, 46, 46);
+    --primary-color: hsla(216.25, 100%, 58.46%, 0.75);
 
-    --foreground-dark-color-1: rgb(26, 26, 26);
-    --foreground-dark-color-2: rgb(20, 20, 20);
-
-    --foreground-light-color-50: rgb(50, 50, 50);
-    --foreground-light-color-60: rgb(60, 60, 60);
-    --foreground-light-color-70: rgb(70, 70, 70);
-
-    --primary-color: 25, 136, 231;
-
-    --tag-blue-color: 25, 136, 231;
-    --tag-green-color: 97, 234, 99;
-
-    --text-color-1: rgb(255, 255, 255);
-    --text-color-2: rgb(220, 220, 220);
-    --text-color-3: rgb(170, 170, 170);
+    --tag-blue-color: hsla(211.95, 100%, 65.79%, 0.35);
+    --tag-green-color: hsla(150.06, 95.53%, 44.77%, 0.35);
 
     --border-radius-small: 8px;
     --border-radius-normal: 12px;
     --border-radius-high: 24px;
 
-    --border-normal: 1px solid rgb(68, 68, 68);
+    --foreground-border: 1px solid var(--foreground-border-color);
 
     --size-1: 10px;
     --size-2: 20px;
@@ -48,16 +52,16 @@ body {
     font-size: 1rem;
     line-height: 1.7;
     background: var(--background-color);
-    color: var(--text-color-2);
+    color: var(--text-color);
     margin: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--text-color-1);
+    color: var(--title-color);
 }
 
 a {
-    color: rgb(var(--primary-color));
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
 }
@@ -68,20 +72,6 @@ a:hover {
 
 .content-block {
     max-width: var(--block-max-width);
-}
-
-.border-normal {
-    border: var(--border-normal);
-    border-radius: var(--border-radius-normal);
-}
-
-.border-high {
-    border: var(--border-normal);
-    border-radius: var(--border-radius-high);
-}
-
-.border-top-normal {
-    border-top: var(--border-normal);
 }
 
 .vertical-flex {
@@ -137,7 +127,6 @@ a:hover {
 }
 
 .text-small {
-    color: var(--text-color-3);
     font-size: 0.8125rem;
 }
 
@@ -145,12 +134,64 @@ a:hover {
     text-align: right;
 }
 
-.foreground-1 {
-    background-color: var(--foreground-color-1);
+.foreground {
+    background-color: var(--foreground-color);
+    color: var(--foreground-text-color);
 }
 
-.foreground-2 {
-    background-color: var(--foreground-color-2);
+.foreground h1,
+.foreground h2,
+.foreground h3,
+.foreground h4,
+.foreground h5,
+.foreground h6 {
+    color: var(--foreground-title-color);
+}
+
+.highlighted {
+    background-color: var(--highlighted-color-normal);
+    color: var(--highlighted-text-color);
+}
+
+.highlighted h1,
+.highlighted h2,
+.highlighted h3,
+.highlighted h4,
+.highlighted h5,
+.highlighted h6 {
+    color: var(--highlighted-title-color);
+}
+
+.bordered {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--border-color);
+}
+
+.bordered-top {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: var(--border-color);
+}
+
+.bordered.foreground, .foreground .bordered-top {
+    border-color: var(--foreground-border-color);
+}
+
+.bordered.highlighted, .highlighted .bordered-top {
+    border-color: var(--highlighted-border-color-normal);
+}
+
+.border-radius-small {
+    border-radius: var(--border-radius-small);
+}
+
+.border-radius-normal {
+    border-radius: var(--border-radius-normal);
+}
+
+.border-radius-high {
+    border-radius: var(--border-radius-high);
 }
 
 .tab {
@@ -166,14 +207,25 @@ a:hover {
 .tab-button {
     position: relative;
     padding: 4px 2px;
-    background-color: rgba(var(--primary-color), 0);
+    background-color: rgba(0, 0, 0, 0);
     border-radius: var(--border-radius-small);
     width: -webkit-fill-available;
     font-weight: bold;
     text-align: center;
-    color: var(--text-color-3);
+    color: var(--text-color);
     cursor: pointer;
+    overflow: hidden;
     transition: all .2s ease-in-out;
+}
+
+.tab-button:hover {
+    color: var(--title-color);
+}
+
+.tab-button.selected {
+    cursor: default;
+    color: var(--highlighted-text-color);
+    background-color: var(--highlighted-color-normal);
 }
 
 .tab-button::after {
@@ -185,29 +237,18 @@ a:hover {
     transform: translate(-50%, 0);
     width: 0;
     height: 2px;
-    background-color: var(--text-color-3);
+    background-color: var(--title-color);
     border-radius: 2px;
-    overflow: hidden;
     transition: all .2s ease-in-out;
-}
-
-.tab-button:hover {
-    color: var(--text-color-2);
 }
 
 .tab-button:hover::after {
     width: 80%;
-    background-color: var(--text-color-2);
-}
-
-.tab-button.selected {
-    cursor: default;
-    color: rgb(var(--primary-color));
-    background-color: rgba(var(--primary-color), 0.15)
+    background-color: var(--title-color);
 }
 
 .tab-button.selected::after {
-    background-color: rgb(var(--primary-color));
+    background-color: var(--highlighted-text-color);
     width: 100%;
 }
 
