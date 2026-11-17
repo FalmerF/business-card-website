@@ -34,7 +34,7 @@
 .md-content h6 { font-size: 1.1em; }
 
 .md-content p {
-    margin: var(--size-1) 0;
+    margin: var(--size-2) 0;
 }
 .md-content p:first-child {
     margin-top: 0;
